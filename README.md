@@ -37,6 +37,15 @@ python3 scripts/gen_icon.py --out faces/x/resources/drawables/launcher_icon.png
 python3 scripts/preview_n3on.py templates/n3on-terminal preview.png
 ```
 
+## Безопасность и лицензии
+- Код под **MIT** (`LICENSE`). Пиксельные шрифты сделаны из DejaVu Sans Mono, см. `templates/n3on-terminal/resources/fonts/LICENSE-DejaVu.txt`.
+- **Никогда не коммить** `developer_key` (`*.der`, `*.pem`). Они уже в `.gitignore`. Потерянный или утёкший ключ означает, что обновить приложение в сторе будет нельзя.
+- Форкаешь шаблон, чтобы опубликовать свой циферблат? Сгенерируй **новый UUID** в `manifest.xml`: `python3 -c "import uuid;print(uuid.uuid4().hex)"`.
+- Используй только оригинальный дизайн, без чужих логотипов и персонажей. Не ставь «Garmin» в название приложения.
+
+## Магазин
+N3on Terminal готовится к публикации в Connect IQ Store. Тексты на 4 языках, скриншоты и иконка лежат в `templates/n3on-terminal/store/`.
+
 ## Скилл глобально (во всех проектах)
 ```bash
 mkdir -p ~/.claude/skills ~/.claude/commands

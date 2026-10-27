@@ -1,6 +1,9 @@
 """Pixel-accurate PNG preview of the N3on Terminal face (3 themes side by side).
 
-Usage: python3 scripts/preview_n3on.py <project_dir> <out.png>
+Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>]
+
+--frames also writes store screenshots: native 240x240 PNGs (like simulator
+screenshots) plus 2x upscaled round versions.
 
 It re-implements the N3onView.mc layout in Python using the project's real
 BMFont files, so you can iterate on layout without the simulator.
@@ -12,6 +15,7 @@ from PIL import Image, ImageDraw
 
 ROOT = sys.argv[1]
 OUT = sys.argv[2]
+FRAMES = sys.argv[sys.argv.index("--frames") + 1] if "--frames" in sys.argv else None
 FD = ROOT + "/resources/fonts/"
 
 PALS = [
@@ -82,7 +86,7 @@ def bot(d, x, y, pal, mood, img):
         small.draw(img, x + 27, y - 4, "z", pal[DM])
 
 
-def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy")):
+def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False):
     img = Image.new("RGB", (240, 240), (0, 0, 0))
     d = ImageDraw.Draw(img)
     for y in range(6, 240, 8):
@@ -114,6 +118,8 @@ def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy")):
     x = small.draw(img, 88, 201, "online", pal[OK])
     small.draw(img, x, 201, "_", pal[H])
     bot(d, 178, 46, pal, mood, img)
+    if raw:
+        return img
     # round display mask + bezel
     mask = Image.new("L", (240, 240), 0)
     ImageDraw.Draw(mask).ellipse([0, 0, 239, 239], fill=255)
@@ -122,9 +128,24 @@ def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy")):
     return out.resize((520, 520), Image.NEAREST)
 
 
-tiles = [face(PALS[0], mood="night"), face(PALS[1], "07:58", "normal"), face(PALS[2], "18:30", "happy")]
-sheet = Image.new("RGB", (520 * 3 + 40, 560), (12, 12, 12))
-for i, t in enumerate(tiles):
-    sheet.paste(t, (10 + i * 530, 20))
-sheet.save(OUT)
-print("saved", OUT)
+if __name__ == "__main__":
+    import os
+    tiles = [face(PALS[0], mood="night"), face(PALS[1], "07:58", "normal"), face(PALS[2], "18:30", "happy")]
+    sheet = Image.new("RGB", (520 * 3 + 40, 560), (12, 12, 12))
+    for i, t in enumerate(tiles):
+        sheet.paste(t, (10 + i * 530, 20))
+    sheet.save(OUT)
+    print("saved", OUT)
+
+    if FRAMES:
+        os.makedirs(FRAMES, exist_ok=True)
+        shots = [
+            ("01-neon-day", PALS[0], "10:08", "normal"),
+            ("02-neon-night", PALS[0], "21:24", "night"),
+            ("03-amber", PALS[1], "07:58", "normal"),
+            ("04-green-goal", PALS[2], "18:30", "happy"),
+        ]
+        for name, pal, t, mood in shots:
+            face(pal, t, mood, raw=True).save(os.path.join(FRAMES, f"{name}-240.png"))
+            face(pal, t, mood).save(os.path.join(FRAMES, f"{name}-round.png"))
+        print("frames in", FRAMES)
