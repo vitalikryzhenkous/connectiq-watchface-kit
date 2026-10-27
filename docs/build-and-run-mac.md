@@ -32,4 +32,5 @@
 - Создать пустой файл `GARMIN/APPS/LOGS/CIQ_LOG.YML` → воспроизвести падение → передать файл в `/wf-debug`.
 
 ## 6. Публикация
+- Сначала: `python3 scripts/release_check.py templates/n3on-terminal` (или `/wf-release-check`). Все ❌ должны быть исправлены, ручной чек-лист пройден.
 - `Monkey C: Export Project` → `.iq` → Developer Dashboard. Подробности в `.claude/skills/connectiq-watchface/references/store-listing.md`.

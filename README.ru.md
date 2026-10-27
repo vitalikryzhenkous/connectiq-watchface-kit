@@ -50,6 +50,14 @@ python3 scripts/preview_n3on.py templates/n3on-terminal preview.png
 ## Поддержать
 Набор бесплатный (MIT). Если он сэкономил тебе время, можно [угостить кофе](https://buymeacoffee.com/vitaliiryzhenko) ☕. Нужен циферблат для клуба, бренда или ивента? Открой issue.
 
+## Эмоции N3o
+Бот сам выбирает одну из 8 эмоций по данным циферблата: норма, ночь, батарея, цель, дождь, уведомление, бег, утро.
+
+![N3o](docs/n3o-emotions.png)
+
+## Релиз
+Перед публикацией в стор: `/wf-release-check templates/n3on-terminal` (или `python3 scripts/release_check.py templates/n3on-terminal`).
+
 ## Безопасность и лицензии
 - Код под **MIT** (`LICENSE`). Пиксельные шрифты сделаны из DejaVu Sans Mono, см. `templates/n3on-terminal/resources/fonts/LICENSE-DejaVu.txt`.
 - **Никогда не коммить** `developer_key` (`*.der`, `*.pem`). Они уже в `.gitignore`. Потерянный или утёкший ключ означает, что обновить приложение в сторе будет нельзя.

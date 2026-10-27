@@ -181,6 +181,8 @@ if __name__ == "__main__":
             ("02-neon-night", PALS[0], "21:24", "night"),
             ("03-amber", PALS[1], "07:58", "normal"),
             ("04-green-goal", PALS[2], "18:30", "happy"),
+            ("05-neon-rain", PALS[0], "13:15", "rain"),
+            ("06-neon-notify", PALS[0], "09:42", "notify"),
         ]
         for name, pal, t, mood in shots:
             face(pal, t, mood, raw=True).save(os.path.join(FRAMES, f"{name}-240.png"))

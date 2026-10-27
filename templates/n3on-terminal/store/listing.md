@@ -30,10 +30,11 @@ Shows:
 
 Settings (Garmin Connect app → Connect IQ):
 • 3 themes: Neon, Amber CRT, Green terminal
-• Scanlines on/off, glitch on/off, bot on/off
+• Scanlines on/off, glitch on/off, bot on/off, bot emotions on/off
+• Latitude/Longitude for sunrise and sunset (0 = automatic)
 
 Battery friendly: animation only while the watch is awake.
-Weather needs a phone sync; sunrise/sunset needs one known position (weather or a GPS activity).
+Weather needs a phone sync. Sunrise/sunset needs one known position: do any GPS activity once, or set Latitude/Longitude in the settings. Until then it shows "no gps fix".
 
 Open source: want to build your own watch face? The full project, plus a Claude Code skill and commands for making Connect IQ faces, is free on GitHub: github.com/vitalikryzhenkous/connectiq-watchface-kit
 
@@ -54,7 +55,7 @@ Wyświetla:
 • Status połączenia z telefonem
 • 8 emocji robota: deszcz, powiadomienia, bieg, poranna kawa i więcej
 
-Ustawienia (Garmin Connect → Connect IQ): 3 motywy (Neon, Amber CRT, Green terminal), linie skanowania, glitch, robot — wł./wył.
+Ustawienia (Garmin Connect → Connect IQ): 3 motywy (Neon, Amber CRT, Green terminal), linie skanowania, glitch, robot, emocje robota — wł./wył.; szerokość/długość geograficzna dla wschodu i zachodu (0 = auto). Jeśli widać „no gps fix”, uruchom raz dowolną aktywność z GPS lub wpisz współrzędne.
 
 Oszczędza baterię: animacje tylko, gdy zegarek jest aktywny.
 
@@ -77,7 +78,7 @@ Anzeige:
 • Verbindungsstatus zum Smartphone
 • 8 Roboter-Emotionen: Regen, Benachrichtigungen, Laufen, Morgenkaffee und mehr
 
-Einstellungen (Garmin Connect → Connect IQ): 3 Themes (Neon, Amber CRT, Green terminal), Scanlines, Glitch, Roboter — ein/aus.
+Einstellungen (Garmin Connect → Connect IQ): 3 Themes (Neon, Amber CRT, Green terminal), Scanlines, Glitch, Roboter, Roboter-Emotionen — ein/aus; Breiten-/Längengrad für Sonnenauf- und -untergang (0 = automatisch). Steht „no gps fix“ da: einmal eine GPS-Aktivität starten oder Koordinaten eintragen.
 
 Akkuschonend: Animationen nur, wenn die Uhr aktiv ist.
 
@@ -100,7 +101,7 @@ Unabhängiges Projekt, nicht mit Garmin verbunden.
 • Статус з'єднання з телефоном
 • 8 емоцій робота: дощ, сповіщення, біг, ранкова кава та інше
 
-Налаштування (Garmin Connect → Connect IQ): 3 теми (Neon, Amber CRT, Green terminal), scanlines, glitch, робот — увімк./вимк.
+Налаштування (Garmin Connect → Connect IQ): 3 теми (Neon, Amber CRT, Green terminal), scanlines, glitch, робот, емоції робота — увімк./вимк.; широта/довгота для сходу й заходу сонця (0 = авто). Якщо видно «no gps fix», запустіть будь-яку GPS-активність або введіть координати.
 
 Економить батарею: анімація лише коли годинник активний.
 

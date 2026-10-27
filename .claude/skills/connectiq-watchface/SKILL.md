@@ -21,7 +21,8 @@ Working kit for Garmin watch faces. Reference project: `templates/n3on-terminal/
 3. **Build and test.** The user follows `docs/build-and-run-mac.md`: build in VS Code, run the simulator, then sideload the `.prg` to `GARMIN/APPS` with OpenMTP.
 4. **Debug.** Fix compiler errors with diffs. A crash on the watch shows as `IQ!`: have the user create `GARMIN/APPS/LOGS/CIQ_LOG.YML`, reproduce the crash and paste the file. See `references/pitfalls.md`.
 5. **More devices.** Add product ids to the manifest and add `resources-<device>/` folders for fonts or layouts that differ. Layout code should use `_ox/_oy` offsets or scale from `dc.getWidth()`.
-6. **Store.** Export the `.iq` and upload it to the Connect IQ developer dashboard. Ship a private beta first: settings from the phone only work on store installs, not sideloads. See `references/store-listing.md`.
+6. **Release gate.** Run `/wf-release-check`. Every ❌ must be fixed and the manual checklist done.
+7. **Store.** Export the `.iq` and upload it to the Connect IQ developer dashboard. Ship a private beta first: settings from the phone only work on store installs, not sideloads. See `references/store-listing.md`.
 
 ## Key APIs (watch face)
 - `WatchUi.WatchFace`: `onLayout`, `onUpdate`, `onEnterSleep`, `onExitSleep`, optionally `onPartialUpdate` for seconds on MIP
@@ -36,8 +37,9 @@ Working kit for Garmin watch faces. Reference project: `templates/n3on-terminal/
 ## Tools in this repo
 - `python3 scripts/ciq_lint.py <dir> --mip` checks the manifest, resources and palette. Run it before telling the user to build.
 - `mcp/server.py` is an MCP server with the same tools for other clients.
+- `python3 scripts/release_check.py <dir>` is the pre-release gate. Run it before every store export.
 - `bench/run.py` runs ConnectIQ-Bench to score a generated face against a task.
 - `scripts/log_fix.py` is an opt-in dataset logger. `/wf-debug` calls it only if `datasets/.optin` exists.
 
 ## Commands in this repo
-`/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-location`, `/wf-store`. They live in `.claude/commands/`.
+`/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-location`, `/wf-store`, `/wf-release-check`. They live in `.claude/commands/`.

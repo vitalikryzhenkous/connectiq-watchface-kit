@@ -37,6 +37,7 @@ To build and run on your watch you need the free Garmin SDK. Follow **[docs/buil
 | `/wf-add-device <dir> <ids>` | Adds devices (MIP/AMOLED, 240–454 px) |
 | `/wf-debug <log>` | Fixes compiler errors or an `IQ!` crash from `CIQ_LOG.YML` |
 | `/wf-location <city\|reset>` | Sets the sunrise/sunset location for sideload testing (offline lookup, city level) |
+| `/wf-release-check <dir>` | Pre-release gate: automated checks plus a manual checklist before the store export |
 | `/wf-store <dir>` | Prepares a Connect IQ Store release: screenshots and a listing in 4 languages |
 
 The `connectiq-watchface` skill loads automatically for any Garmin/Connect IQ task inside this repo.
@@ -70,6 +71,7 @@ See [bench/README.md](bench/README.md).
 | `scripts/gen_icon.py` | Pixel launcher icon |
 | `scripts/preview_n3on.py` | Layout preview and store screenshots |
 | `scripts/set_location.py` | `--city "Poznań"`, `--lat/--lon` or `--reset` for the Lat/Lon defaults (offline, optional `pip install geonamescache`) |
+| `scripts/release_check.py` | Release gate: lint, location reset, settings/strings, naming, store assets, secrets, git |
 | `scripts/ciq_lint.py` | Manifest, resources and MIP 64-color palette checks (no SDK needed) |
 | `datasets/` | Opt-in, local-only log of your own compiler-error → fix pairs ([details](datasets/README.md)) |
 | `.claude/skills/connectiq-watchface/references/pitfalls.md` | Compiler, runtime and tooling gotchas |
