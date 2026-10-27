@@ -1,0 +1,18 @@
+<settings>
+    <setting propertyKey="@Properties.Theme" title="@Strings.ThemeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ThemeNeon</listEntry>
+            <listEntry value="1">@Strings.ThemeAmber</listEntry>
+            <listEntry value="2">@Strings.ThemeMatrix</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.Scanlines" title="@Strings.ScanTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.Glitch" title="@Strings.GlitchTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.ShowBot" title="@Strings.BotTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+</settings>

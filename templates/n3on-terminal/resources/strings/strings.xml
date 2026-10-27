@@ -1,0 +1,10 @@
+<strings>
+    <string id="AppName">N3on Terminal</string>
+    <string id="ThemeTitle">Color theme</string>
+    <string id="ThemeNeon">Neon (cyan / magenta)</string>
+    <string id="ThemeAmber">Amber CRT</string>
+    <string id="ThemeMatrix">Green terminal</string>
+    <string id="ScanTitle">Scanlines</string>
+    <string id="GlitchTitle">Glitch effect</string>
+    <string id="BotTitle">Show bot</string>
+</strings>

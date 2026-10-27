@@ -1,0 +1,4 @@
+<fonts>
+    <font id="TermSmall" filename="term_small.fnt" antialias="false"/>
+    <font id="TermBig" filename="term_big.fnt" antialias="false"/>
+</fonts>
