@@ -83,6 +83,10 @@ N3o has 8 emotions, picked automatically from data the face already reads: norma
 
 ![N3o emotions](docs/n3o-emotions.png)
 
+Holiday looks switch on automatically by date: Halloween, Christmas, New Year, Valentine's Day, Easter and a winter scarf. You can turn them off in the settings.
+
+![N3o holidays](docs/n3o-holidays.png)
+
 ## Security
 - Never commit your developer key (`developer_key`, `*.der`, `*.pem`). These are already in `.gitignore`. If you lose it, you can't update your store app.
 - Publishing a fork? Generate a new app UUID: `python3 -c "import uuid;print(uuid.uuid4().hex)"`.

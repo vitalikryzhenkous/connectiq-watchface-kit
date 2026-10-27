@@ -26,6 +26,9 @@ class N3onView extends WatchUi.WatchFace {
     private var _showBot = true;
     private var _manLoc = null; // manual [lat, lon] from settings
     private var _emotions = true;
+    private var _holidays = true;
+    private var _holiday = 0;
+    private var _holidayDay = -1;
 
     // step-rate tracking for the RUN mood (sampled once per minute)
     private var _rateMin = -1;
@@ -61,6 +64,7 @@ class N3onView extends WatchUi.WatchFace {
         _glitch = readProp("Glitch", true);
         _showBot = readProp("ShowBot", true);
         _emotions = readProp("Emotions", true);
+        _holidays = readProp("Holidays", true);
         var lat = readProp("Lat", 0.0);
         var lon = readProp("Lon", 0.0);
         _manLoc = null;
@@ -210,6 +214,16 @@ class N3onView extends WatchUi.WatchFace {
             var blink = _awake && (clock.sec % 7 == 0);
             var phase = _awake && (clock.sec % 2 == 0);
             Bot.draw(dc, _ox + 178, _oy + 46, _pal, mood, blink, phase, _fSmall);
+            if (_holidays) {
+                var dayKey = d.year * 400 + d.month * 32 + d.day;
+                if (dayKey != _holidayDay) {
+                    _holiday = Holiday.of(d.year, d.month, d.day);
+                    _holidayDay = dayKey;
+                }
+                if (_holiday != Holiday.NONE) {
+                    Holiday.draw(dc, _ox + 178, _oy + 46, _pal, _holiday, mood);
+                }
+            }
         }
     }
 

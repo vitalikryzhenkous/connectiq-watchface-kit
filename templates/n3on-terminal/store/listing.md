@@ -27,6 +27,7 @@ Shows:
 • Steps and battery
 • Phone connection status
 • 8 bot emotions: rain, notifications, running, morning coffee and more
+• Holiday looks: Halloween, Christmas, New Year, Valentine's Day, Easter, winter scarf
 
 Settings (Garmin Connect app → Connect IQ):
 • 3 themes: Neon, Amber CRT, Green terminal
@@ -54,6 +55,7 @@ Wyświetla:
 • Kroki i baterię
 • Status połączenia z telefonem
 • 8 emocji robota: deszcz, powiadomienia, bieg, poranna kawa i więcej
+• Świąteczne stroje: Halloween, Boże Narodzenie, Nowy Rok, Walentynki, Wielkanoc, zimowy szalik
 
 Ustawienia (Garmin Connect → Connect IQ): 3 motywy (Neon, Amber CRT, Green terminal), linie skanowania, glitch, robot, emocje robota — wł./wył.; szerokość/długość geograficzna dla wschodu i zachodu (0 = auto). Jeśli widać „no gps fix”, uruchom raz dowolną aktywność z GPS lub wpisz współrzędne.
 
@@ -77,6 +79,7 @@ Anzeige:
 • Schritte und Akku
 • Verbindungsstatus zum Smartphone
 • 8 Roboter-Emotionen: Regen, Benachrichtigungen, Laufen, Morgenkaffee und mehr
+• Feiertags-Looks: Halloween, Weihnachten, Neujahr, Valentinstag, Ostern, Winterschal
 
 Einstellungen (Garmin Connect → Connect IQ): 3 Themes (Neon, Amber CRT, Green terminal), Scanlines, Glitch, Roboter, Roboter-Emotionen — ein/aus; Breiten-/Längengrad für Sonnenauf- und -untergang (0 = automatisch). Steht „no gps fix“ da: einmal eine GPS-Aktivität starten oder Koordinaten eintragen.
 
@@ -100,6 +103,7 @@ Unabhängiges Projekt, nicht mit Garmin verbunden.
 • Кроки і батарею
 • Статус з'єднання з телефоном
 • 8 емоцій робота: дощ, сповіщення, біг, ранкова кава та інше
+• Святкові образи: Хелловін, Різдво, Новий рік, День закоханих, Великдень, зимовий шарф
 
 Налаштування (Garmin Connect → Connect IQ): 3 теми (Neon, Amber CRT, Green terminal), scanlines, glitch, робот, емоції робота — увімк./вимк.; широта/довгота для сходу й заходу сонця (0 = авто). Якщо видно «no gps fix», запустіть будь-яку GPS-активність або введіть координати.
 
@@ -110,6 +114,12 @@ Open source: хочете зробити власний циферблат? Ув
 Незалежний проєкт, не пов'язаний з Garmin.
 
 ---
+
+## What's new (1.1.0)
+EN: Holiday looks for N3o (Halloween, Christmas, New Year, Valentine's, Easter, winter) + setting to turn them off.
+PL: Świąteczne stroje N3o + przełącznik w ustawieniach.
+DE: Feiertags-Looks für N3o + Schalter in den Einstellungen.
+UK: Святкові образи N3o + перемикач у налаштуваннях.
 
 ## What's new (1.0.0)
 EN: First release. PL: Pierwsze wydanie. DE: Erste Version. UK: Перший реліз.

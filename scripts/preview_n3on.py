@@ -1,6 +1,6 @@
 """Pixel-accurate PNG preview of the N3on Terminal face (3 themes side by side).
 
-Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>] [--moods <sheet.png>]
+Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>] [--moods <sheet.png>] [--holidays <sheet.png>]
 
 --frames also writes store screenshots: native 240x240 PNGs (like simulator
 screenshots) plus 2x upscaled round versions.
@@ -123,7 +123,41 @@ def bot(d, x, y, pal, mood, img, phase=True):
         small.draw(img, x + 27, y - 4, "z", pal[DM])
 
 
-def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False):
+def holiday_overlay(d, x, y, pal, holiday, mood):
+    """Mirror of source/Holiday.mc draw(). holiday: halloween, christmas, newyear, valentine, easter, winter."""
+    OR, RD, GN, PK, WH = 0xFF5500, 0xFF0000, 0x00AA00, 0xFF55AA, 0xFFFFFF
+    r = lambda x0, y0, w, h, c: d.rectangle([x + x0, y + y0, x + x0 + w - 1, y + y0 + h - 1], fill=rgb(c))
+    hat_ok = mood != "rain"
+    left_free = mood not in ("notify", "happy")
+
+    def heart(a, b, c):
+        r(a, b + 1, 5, 2, c); r(a + 1, b, 1, 1, c); r(a + 3, b, 1, 1, c); r(a + 1, b + 3, 3, 1, c); r(a + 2, b + 4, 1, 1, c)
+
+    if holiday == "halloween":
+        r(37, 58, 13, 9, OR); r(39, 56, 9, 2, OR); r(43, 53, 2, 3, GN)
+        r(40, 60, 2, 2, 0); r(45, 60, 2, 2, 0); r(41, 64, 6, 1, 0)
+        if left_free:
+            r(-16, 6, 10, 2, pal[DM]); r(-13, 4, 4, 6, pal[DM]); r(-18, 4, 2, 2, pal[DM]); r(-6, 4, 2, 2, pal[DM])
+    elif holiday == "christmas" and hat_ok:
+        r(4, 9, 30, 5, RD); r(8, 5, 22, 4, RD); r(12, 1, 16, 4, RD); r(18, -2, 14, 3, RD)
+        r(1, 13, 36, 3, WH); r(31, -5, 5, 5, WH)
+    elif holiday == "newyear":
+        if hat_ok:
+            r(12, 9, 14, 5, pal[A]); r(16, 1, 6, 4, pal[A]); r(14, 5, 10, 4, pal[H]); r(18, -2, 2, 3, pal[H]); r(12, 14, 14, 2, pal[A])
+        for a, b, c in ((-6, 4, P), (44, 20, P), (-10, 14, H), (40, 6, H), (2, -2, A), (42, 34, A)):
+            r(a, b, 2, 2, pal[c])
+    elif holiday == "valentine":
+        if mood == "normal":
+            r(8, 24, 22, 8, pal[P]); heart(10, 25, RD); heart(23, 25, RD)
+        if left_free:
+            heart(-12, 2, PK); heart(-6, 10, RD)
+    elif holiday == "easter" and mood != "morning":
+        r(41, 43, 6, 9, WH); r(42, 42, 4, 1, WH); r(42, 52, 4, 1, WH); r(41, 45, 6, 1, pal[A]); r(41, 48, 6, 1, pal[P])
+    elif holiday == "winter":
+        r(4, 44, 30, 4, RD); r(24, 48, 5, 9, RD); r(4, 45, 30, 1, WH); r(24, 53, 5, 1, WH)
+
+
+def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False, holiday=None):
     img = Image.new("RGB", (240, 240), (0, 0, 0))
     d = ImageDraw.Draw(img)
     for y in range(6, 240, 8):
@@ -155,6 +189,8 @@ def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False):
     x = small.draw(img, 88, 201, "online", pal[OK])
     small.draw(img, x, 201, "_", pal[H])
     bot(d, 178, 46, pal, mood, img)
+    if holiday:
+        holiday_overlay(d, 178, 46, pal, holiday, mood)
     if raw:
         return img
     # round display mask + bezel
@@ -199,3 +235,15 @@ if __name__ == "__main__":
             grid.paste(cimg, (10 + (k % 4) * (cw + 10), 10 + (k // 4) * (ch + 10)))
         grid.save(moods_out)
         print("moods sheet:", moods_out)
+
+    if "--holidays" in sys.argv:
+        hol_out = sys.argv[sys.argv.index("--holidays") + 1]
+        items = [("halloween", "normal"), ("christmas", "normal"), ("newyear", "happy"),
+                 ("valentine", "normal"), ("easter", "normal"), ("winter", "normal")]
+        cells = [face(PALS[0], "10:08", m, holiday=h) for h, m in items]
+        cw, ch = cells[0].size
+        grid = Image.new("RGB", (cw * 3 + 40, ch * 2 + 30), (12, 12, 12))
+        for k, cimg in enumerate(cells):
+            grid.paste(cimg, (10 + (k % 3) * (cw + 10), 10 + (k // 3) * (ch + 10)))
+        grid.save(hol_out)
+        print("holidays sheet:", hol_out)
