@@ -104,3 +104,6 @@ Mean 0.976, 8 of 10 perfect. The template is a complete solution for t01-t08 as 
 not compiled in this run (no SDK in the environment), though the face has been built and run on a real fr945.
 t09 and t10 need real changes (more products, AMOLED layout), and the near-perfect scores there show how weak
 a static-only score is, which is why `--compile` matters.
+
+---
+Part of [connectiq-watchface-kit](../README.md). Like it? [Buy me a coffee](https://buymeacoffee.com/vitaliiryzhenko) ☕

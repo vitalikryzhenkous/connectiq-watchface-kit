@@ -2,6 +2,8 @@
 
 🇬🇧 [English](README.md) · 🇷🇺 Русский
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
+
 Набор для создания циферблатов Garmin Connect IQ вместе с Claude Code: скилл, slash-команды, скрипты и эталонный проект.
 
 ![N3on Terminal](docs/n3on-preview.png)
@@ -43,6 +45,9 @@ python3 scripts/gen_font.py --ttf /path/Mono.ttf --size 14 --name term_small --o
 python3 scripts/gen_icon.py --out faces/x/resources/drawables/launcher_icon.png
 python3 scripts/preview_n3on.py templates/n3on-terminal preview.png
 ```
+
+## Поддержать
+Набор бесплатный (MIT). Если он сэкономил тебе время, можно [угостить кофе](https://buymeacoffee.com/vitaliiryzhenko) ☕. Нужен циферблат для клуба, бренда или ивента? Открой issue.
 
 ## Безопасность и лицензии
 - Код под **MIT** (`LICENSE`). Пиксельные шрифты сделаны из DejaVu Sans Mono, см. `templates/n3on-terminal/resources/fonts/LICENSE-DejaVu.txt`.

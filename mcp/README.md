@@ -56,3 +56,6 @@ Includes a real stdio smoke test that starts the server and calls it through the
 - Existing directories are never overwritten: `scaffold_face` refuses an existing `out_dir/slug`, and `gen_font` refuses to replace existing font files. The only file overwritten is `preview.png`.
 - The one read outside those roots is the font file passed to `gen_font` (for example a system TTF). It must be a `.ttf` or `.otf`.
 - Inputs are validated: slug `^[a-z0-9-]{2,40}$`, device ids `^[a-z0-9_]{2,40}$`, font names `^[A-Za-z0-9_-]{1,40}$`; the app name is XML-escaped.
+
+---
+Part of [connectiq-watchface-kit](../README.md). Like it? [Buy me a coffee](https://buymeacoffee.com/vitaliiryzhenko) ☕

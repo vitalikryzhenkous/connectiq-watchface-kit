@@ -2,6 +2,8 @@
 
 🇬🇧 English · 🇷🇺 [Русский](README.ru.md)
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
+
 Build Garmin Connect IQ watch faces with [Claude Code](https://claude.com/claude-code). It comes with a ready skill, slash commands, pixel-font tooling and a complete reference face that has been verified on a real Forerunner 945.
 
 ![N3on Terminal](docs/n3on-preview.png)
@@ -78,6 +80,9 @@ A cyberpunk terminal face with glitched time, weather, sunrise and sunset (compu
 - Publishing a fork? Generate a new app UUID: `python3 -c "import uuid;print(uuid.uuid4().hex)"`.
 - Use original art only. No third-party logos or characters, and no "Garmin" in the app name.
 - Report issues privately, as described in [SECURITY.md](SECURITY.md).
+
+## Support
+The kit is free and MIT-licensed. If it saved you time, you can [buy me a coffee](https://buymeacoffee.com/vitaliiryzhenko) ☕. Need a custom watch face for your club, brand or event? Open an issue.
 
 ## License
 MIT. The bitmap fonts are derived from DejaVu Sans Mono and use the [Bitstream Vera license](templates/n3on-terminal/resources/fonts/LICENSE-DejaVu.txt).
