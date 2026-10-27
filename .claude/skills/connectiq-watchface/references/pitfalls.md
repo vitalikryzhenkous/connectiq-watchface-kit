@@ -26,3 +26,8 @@
 - `Weather.getCurrentConditions().observationLocationPosition` is often null, and `Activity.getActivityInfo().currentLocation` stays null until the watch has had a GPS fix (in any GPS activity). A fresh face has no position, so cache the last good one in `Application.Storage`.
 - Always offer a manual Lat/Lon setting (0/0 = auto) and show a hint like "no gps fix" instead of an empty time.
 - For sideload testing use `/wf-location <city>` (offline, city-level). Reset it with `/wf-location reset` before committing or store export.
+
+## Text and animation on watch faces
+- Watch faces can't use `Timer`. When awake, `onUpdate` runs once per second; in sleep, once per minute. Typing effects reveal 2–3 characters per tick, measured from `onExitSleep`.
+- Bitmap fonts contain only the glyphs you generate. Add Polish/Cyrillic with `gen_font.py --chars`. For CJK, ship a subset font (phrase glyphs + kana) and load it only when needed. CJK glyphs are about 2× wider than Latin, so budget the line width.
+- Keep secondary text at >= 7:1 contrast on black (e.g. `AAAAAA`, `FF55AA`). Use `555555` for decor only.

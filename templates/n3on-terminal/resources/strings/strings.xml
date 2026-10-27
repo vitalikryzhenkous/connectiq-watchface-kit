@@ -9,6 +9,19 @@
     <string id="BotTitle">Show bot</string>
     <string id="EmotionsTitle">Bot emotions (rain, notifications, activity, morning)</string>
     <string id="HolidaysTitle">Holiday looks (Halloween, Christmas, New Year...)</string>
+    <string id="ThemeHigh">High contrast</string>
+    <string id="PhraseModeTitle">What the bot says</string>
+    <string id="PhraseAuto">Auto (reacts to your day)</string>
+    <string id="PhraseMine">Only my phrase</string>
+    <string id="PhraseMixed">Mixed (my phrase every other hour)</string>
+    <string id="LanguageTitle">Bot language</string>
+    <string id="LangAuto">Auto (watch language)</string>
+    <string id="LangEn">English</string>
+    <string id="LangPl">Polski</string>
+    <string id="LangUa">Українська</string>
+    <string id="LangJa">日本語</string>
+    <string id="PhraseTitle">My phrase (max 14: latin, PL, UA, kana)</string>
+    <string id="TypingTitle">Typing animation on wake</string>
     <string id="LatTitle">Latitude for sunrise (0 = auto)</string>
     <string id="LonTitle">Longitude for sunrise (0 = auto)</string>
 </strings>

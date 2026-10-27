@@ -28,10 +28,14 @@ Shows:
 • Phone connection status
 • 8 bot emotions: rain, notifications, running, morning coffee and more
 • Holiday looks: Halloween, Christmas, New Year, Valentine's Day, Easter, winter scarf
+• N3o talks: short phrases that react to your day, typed in on wrist raise (EN, PL, UA, JA) or your own phrase
+• High contrast theme for bright sun and low vision
 
 Settings (Garmin Connect app → Connect IQ):
 • 3 themes: Neon, Amber CRT, Green terminal
-• Scanlines on/off, glitch on/off, bot on/off, bot emotions on/off
+• Themes: Neon, Amber CRT, Green terminal, High contrast
+• Scanlines on/off, glitch on/off, bot on/off, bot emotions on/off, holiday looks on/off
+• What the bot says (auto / my phrase / mixed), bot language, my phrase, typing animation
 • Latitude/Longitude for sunrise and sunset (0 = automatic)
 
 Battery friendly: animation only while the watch is awake.
@@ -56,6 +60,8 @@ Wyświetla:
 • Status połączenia z telefonem
 • 8 emocji robota: deszcz, powiadomienia, bieg, poranna kawa i więcej
 • Świąteczne stroje: Halloween, Boże Narodzenie, Nowy Rok, Walentynki, Wielkanoc, zimowy szalik
+• N3o mówi: krótkie zdania reagujące na Twój dzień, wpisywane po podniesieniu ręki (EN, PL, UA, JA) lub Twoje własne
+• Motyw wysokiego kontrastu na mocne słońce i słabszy wzrok
 
 Ustawienia (Garmin Connect → Connect IQ): 3 motywy (Neon, Amber CRT, Green terminal), linie skanowania, glitch, robot, emocje robota — wł./wył.; szerokość/długość geograficzna dla wschodu i zachodu (0 = auto). Jeśli widać „no gps fix”, uruchom raz dowolną aktywność z GPS lub wpisz współrzędne.
 
@@ -80,6 +86,8 @@ Anzeige:
 • Verbindungsstatus zum Smartphone
 • 8 Roboter-Emotionen: Regen, Benachrichtigungen, Laufen, Morgenkaffee und mehr
 • Feiertags-Looks: Halloween, Weihnachten, Neujahr, Valentinstag, Ostern, Winterschal
+• N3o spricht: kurze Sätze passend zu deinem Tag, beim Handgelenk-Heben eingetippt (EN, PL, UA, JA) oder dein eigener Satz
+• Hochkontrast-Theme für grelle Sonne und schwächere Augen
 
 Einstellungen (Garmin Connect → Connect IQ): 3 Themes (Neon, Amber CRT, Green terminal), Scanlines, Glitch, Roboter, Roboter-Emotionen — ein/aus; Breiten-/Längengrad für Sonnenauf- und -untergang (0 = automatisch). Steht „no gps fix“ da: einmal eine GPS-Aktivität starten oder Koordinaten eintragen.
 
@@ -104,6 +112,8 @@ Unabhängiges Projekt, nicht mit Garmin verbunden.
 • Статус з'єднання з телефоном
 • 8 емоцій робота: дощ, сповіщення, біг, ранкова кава та інше
 • Святкові образи: Хелловін, Різдво, Новий рік, День закоханих, Великдень, зимовий шарф
+• N3o говорить: короткі фрази, що реагують на ваш день, друкуються при піднятті руки (EN, PL, UA, JA) або ваша власна фраза
+• Тема високого контрасту для яскравого сонця та слабшого зору
 
 Налаштування (Garmin Connect → Connect IQ): 3 теми (Neon, Amber CRT, Green terminal), scanlines, glitch, робот, емоції робота — увімк./вимк.; широта/довгота для сходу й заходу сонця (0 = авто). Якщо видно «no gps fix», запустіть будь-яку GPS-активність або введіть координати.
 
@@ -116,10 +126,10 @@ Open source: хочете зробити власний циферблат? Ув
 ---
 
 ## What's new (1.1.0)
-EN: Holiday looks for N3o (Halloween, Christmas, New Year, Valentine's, Easter, winter) + setting to turn them off.
-PL: Świąteczne stroje N3o + przełącznik w ustawieniach.
-DE: Feiertags-Looks für N3o + Schalter in den Einstellungen.
-UK: Святкові образи N3o + перемикач у налаштуваннях.
+EN: N3o talks (EN/PL/UA/JA, typing animation, your own phrase), holiday looks, High contrast theme, bolder text and better contrast.
+PL: N3o mówi (EN/PL/UA/JA, animacja pisania, własne zdanie), stroje świąteczne, motyw wysokiego kontrastu, grubszy tekst.
+DE: N3o spricht (EN/PL/UA/JA, Tipp-Animation, eigener Satz), Feiertags-Looks, Hochkontrast-Theme, kräftigere Schrift.
+UK: N3o говорить (EN/PL/UA/JA, анімація друку, власна фраза), святкові образи, тема високого контрасту, жирніший текст.
 
 ## What's new (1.0.0)
 EN: First release. PL: Pierwsze wydanie. DE: Erste Version. UK: Перший реліз.

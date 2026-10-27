@@ -24,3 +24,5 @@ SOFTWARE.
 Bitmap fonts in templates/*/resources/fonts/ are rendered from DejaVu Sans Mono
 and are covered by the Bitstream Vera / DejaVu font license — see
 templates/n3on-terminal/resources/fonts/LICENSE-DejaVu.txt.
+The Japanese bitmap font (term_ja) is a subset of PixelMplus (M+ FONT LICENSE) —
+see templates/n3on-terminal/resources/fonts/LICENSE-MPLUS.txt.

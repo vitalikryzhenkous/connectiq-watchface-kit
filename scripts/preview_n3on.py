@@ -1,6 +1,6 @@
 """Pixel-accurate PNG preview of the N3on Terminal face (3 themes side by side).
 
-Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>] [--moods <sheet.png>] [--holidays <sheet.png>]
+Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>] [--moods <sheet.png>] [--holidays <sheet.png>] [--phrases <sheet.png>]
 
 --frames also writes store screenshots: native 240x240 PNGs (like simulator
 screenshots) plus 2x upscaled round versions.
@@ -18,12 +18,14 @@ OUT = sys.argv[2]
 FRAMES = sys.argv[sys.argv.index("--frames") + 1] if "--frames" in sys.argv else None
 FD = ROOT + "/resources/fonts/"
 
+# mirror of source/Theme.mc (index 3 = High contrast)
 PALS = [
-    [0x00FFFF, 0xFF00AA, 0xFFFF00, 0x555555, 0x00FF55, 0xAA00AA, 0x000055],
-    [0xFFAA00, 0xFF5500, 0xFFFF55, 0x555555, 0xFFAA00, 0xAA5500, 0x550000],
-    [0x00FF00, 0x00AA55, 0xAAFF55, 0x555555, 0x55FF55, 0x00AA00, 0x005500],
+    [0x00FFFF, 0xFF55AA, 0xFFFF00, 0x555555, 0x00FF55, 0xAA00AA, 0x000055, 0xAAAAAA],
+    [0xFFAA00, 0xFF5500, 0xFFFF55, 0x555555, 0xFFAA00, 0xAA5500, 0x550000, 0xAAAAAA],
+    [0x00FF00, 0x55AA55, 0xAAFF55, 0x555555, 0x55FF55, 0x00AA00, 0x005500, 0xAAAAAA],
+    [0xFFFFFF, 0xFFFF00, 0x00FFFF, 0x555555, 0x55FF55, 0xAA00AA, 0x000000, 0xAAAAAA],
 ]
-P, A, H, DM, OK, BT, SC = range(7)
+P, A, H, DM, OK, BT, SC, MU = range(8)
 
 
 def rgb(c):
@@ -54,7 +56,7 @@ class Font:
         return x
 
 
-small, big = Font("term_small"), Font("term_big")
+small, big, ja = Font("term_small"), Font("term_big"), Font("term_ja")
 
 
 def bot(d, x, y, pal, mood, img, phase=True):
@@ -157,37 +159,47 @@ def holiday_overlay(d, x, y, pal, holiday, mood):
         r(4, 44, 30, 4, RD); r(24, 48, 5, 9, RD); r(4, 45, 30, 1, WH); r(24, 53, 5, 1, WH)
 
 
-def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False, holiday=None):
+def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False, holiday=None,
+         phrase="hi there", glitch=False, online=True):
     img = Image.new("RGB", (240, 240), (0, 0, 0))
     d = ImageDraw.Draw(img)
-    for y in range(6, 240, 8):
-        d.line([0, y, 240, y], fill=rgb(pal[SC]))
+    hc = pal is PALS[3]
+    if not hc:
+        for y in range(6, 240, 8):
+            d.line([0, y, 240, y], fill=rgb(pal[SC]))
     small.draw(img, 120, 18, "[ sys://n3on-0x1 ]", pal[A], "c")
     d.line([42, 37, 198, 37], fill=rgb(pal[A]))
-    small.draw(img, 26, 42, "> uptime", pal[P])
-    big.draw(img, 21, 59, time, pal[A])
-    d.rectangle([8, 90, 25, 92], fill=rgb(pal[A]))
-    d.rectangle([140, 70, 153, 71], fill=rgb(pal[H]))
+    # first line: bot phrase + cursor (Japanese uses the term_ja font)
+    px = small.draw(img, 26, 42, "> ", pal[P])
+    if any(ord(c) >= 0x3000 for c in phrase):
+        px = ja.draw(img, px, 44, phrase, pal[P])
+    else:
+        px = small.draw(img, px, 42, phrase, pal[P])
+    small.draw(img, px, 42, "_", pal[H])
+    if glitch and not hc:
+        big.draw(img, 21, 59, time, pal[A])
+        d.rectangle([8, 90, 25, 92], fill=rgb(pal[A]))
+        d.rectangle([140, 70, 153, 71], fill=rgb(pal[H]))
     big.draw(img, 24, 57, time, pal[P])
-    small.draw(img, 24, 114, "> mon 26.10.26", pal[H])
-    x = small.draw(img, 16, 134, "> wx ", pal[P])
+    small.draw(img, 12, 114, "> mon 26.10.26", pal[H])
+    x = small.draw(img, 14, 134, "> wx ", pal[P])
     x = small.draw(img, x, 134, wx[0], pal[A])
     x = small.draw(img, x, 134, " " + wx[1], pal[P])
     cx, cy = x + 8, 136
     d.rectangle([cx + 4, cy + 2, cx + 9, cy + 5], fill=(170, 170, 170))
     d.rectangle([cx + 9, cy, cx + 14, cy + 5], fill=(170, 170, 170))
     d.rectangle([cx, cy + 5, cx + 17, cy + 9], fill=(170, 170, 170))
-    x = small.draw(img, 12, 154, "> sun ", pal[P])
+    x = small.draw(img, 20, 154, "> sun ", pal[P])
     x = small.draw(img, x, 154, "▲06:41", pal[H])
     small.draw(img, x, 154, " ▼16:22", pal[A])
-    x = small.draw(img, 20, 174, "> stp ", pal[P])
+    x = small.draw(img, 30, 174, "> stp ", pal[P])
     x = small.draw(img, x, 174, "8.4k", pal[A])
     x = small.draw(img, x, 174, "  bat ", pal[P])
     small.draw(img, x, 174, "78%", pal[H])
     d.line([46, 196, 194, 196], fill=rgb(pal[A]))
-    d.ellipse([74, 206, 82, 214], fill=rgb(pal[OK]))
-    x = small.draw(img, 88, 201, "online", pal[OK])
-    small.draw(img, x, 201, "_", pal[H])
+    st = pal[OK] if online else pal[MU]
+    d.ellipse([74, 206, 82, 214], fill=rgb(st))
+    small.draw(img, 88, 201, "online" if online else "offline", st)
     bot(d, 178, 46, pal, mood, img)
     if holiday:
         holiday_overlay(d, 178, 46, pal, holiday, mood)
@@ -213,22 +225,24 @@ if __name__ == "__main__":
     if FRAMES:
         os.makedirs(FRAMES, exist_ok=True)
         shots = [
-            ("01-neon-day", PALS[0], "10:08", "normal"),
-            ("02-neon-night", PALS[0], "21:24", "night"),
-            ("03-amber", PALS[1], "07:58", "normal"),
-            ("04-green-goal", PALS[2], "18:30", "happy"),
-            ("05-neon-rain", PALS[0], "13:15", "rain"),
-            ("06-neon-notify", PALS[0], "09:42", "notify"),
+            ("01-neon-day", PALS[0], "10:08", "normal", "hi there", True),
+            ("02-neon-night", PALS[0], "21:24", "night", "sleep tight", False),
+            ("03-amber", PALS[1], "07:58", "morning", "good morning", False),
+            ("04-green-goal", PALS[2], "18:30", "happy", "goal smashed!", False),
+            ("05-neon-rain", PALS[0], "13:15", "rain", "take umbrella", False),
+            ("06-neon-notify", PALS[0], "09:42", "notify", "3 new msg", False),
+            ("07-high-contrast", PALS[3], "16:05", "normal", "hejka!", False),
         ]
-        for name, pal, t, mood in shots:
-            face(pal, t, mood, raw=True).save(os.path.join(FRAMES, f"{name}-240.png"))
-            face(pal, t, mood).save(os.path.join(FRAMES, f"{name}-round.png"))
+        for name, pal, t, mood, ph, gl in shots:
+            face(pal, t, mood, raw=True, phrase=ph, glitch=gl).save(os.path.join(FRAMES, f"{name}-240.png"))
+            face(pal, t, mood, phrase=ph, glitch=gl).save(os.path.join(FRAMES, f"{name}-round.png"))
         print("frames in", FRAMES)
 
     if "--moods" in sys.argv:
         moods_out = sys.argv[sys.argv.index("--moods") + 1]
         names = ["normal", "night", "low", "happy", "rain", "notify", "run", "morning"]
-        cells = [face(PALS[0], "10:08", m) for m in names]
+        says = ["hi there", "sleep tight", "charge me pls", "goal smashed!", "take umbrella", "3 new msg", "go go go!", "good morning"]
+        cells = [face(PALS[0], "10:08", m, phrase=t) for m, t in zip(names, says)]
         cw, ch = cells[0].size
         grid = Image.new("RGB", (cw * 4 + 50, ch * 2 + 30), (12, 12, 12))
         for k, cimg in enumerate(cells):
@@ -238,12 +252,25 @@ if __name__ == "__main__":
 
     if "--holidays" in sys.argv:
         hol_out = sys.argv[sys.argv.index("--holidays") + 1]
-        items = [("halloween", "normal"), ("christmas", "normal"), ("newyear", "happy"),
-                 ("valentine", "normal"), ("easter", "normal"), ("winter", "normal")]
-        cells = [face(PALS[0], "10:08", m, holiday=h) for h, m in items]
+        items = [("halloween", "normal", "boo!"), ("christmas", "normal", "merry xmas!"),
+                 ("newyear", "happy", "happy new year"), ("valentine", "normal", "love you <3"),
+                 ("easter", "normal", "happy easter"), ("winter", "normal", "hejka!")]
+        cells = [face(PALS[0], "10:08", m, holiday=h, phrase=t) for h, m, t in items]
         cw, ch = cells[0].size
         grid = Image.new("RGB", (cw * 3 + 40, ch * 2 + 30), (12, 12, 12))
         for k, cimg in enumerate(cells):
             grid.paste(cimg, (10 + (k % 3) * (cw + 10), 10 + (k // 3) * (ch + 10)))
         grid.save(hol_out)
         print("holidays sheet:", hol_out)
+
+    if "--phrases" in sys.argv:
+        ph_out = sys.argv[sys.argv.index("--phrases") + 1]
+        items = [(PALS[0], "hi there"), (PALS[0], "dzień dobry"), (PALS[0], "привіт!"),
+                 (PALS[0], "おはよう"), (PALS[0], "ハッピーハロウィン"), (PALS[3], "hejka Vitalii")]
+        cells = [face(p, "10:08", "normal", phrase=t) for p, t in items]
+        cw, ch = cells[0].size
+        grid = Image.new("RGB", (cw * 3 + 40, ch * 2 + 30), (12, 12, 12))
+        for k, cimg in enumerate(cells):
+            grid.paste(cimg, (10 + (k % 3) * (cw + 10), 10 + (k // 3) * (ch + 10)))
+        grid.save(ph_out)
+        print("phrases sheet:", ph_out)

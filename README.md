@@ -87,6 +87,10 @@ Holiday looks switch on automatically by date: Halloween, Christmas, New Year, V
 
 ![N3o holidays](docs/n3o-holidays.png)
 
+N3o talks on the first line. Phrases react to the day (morning, rain, goal, notifications, holidays) in English, Polish, Ukrainian or Japanese, or show your own phrase. They're typed in after a wrist raise. A High contrast theme is there for bright sun and low vision.
+
+![N3o phrases](docs/n3o-phrases.png)
+
 ## Security
 - Never commit your developer key (`developer_key`, `*.der`, `*.pem`). These are already in `.gitignore`. If you lose it, you can't update your store app.
 - Publishing a fork? Generate a new app UUID: `python3 -c "import uuid;print(uuid.uuid4().hex)"`.

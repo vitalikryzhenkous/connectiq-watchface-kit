@@ -4,6 +4,7 @@
             <listEntry value="0">@Strings.ThemeNeon</listEntry>
             <listEntry value="1">@Strings.ThemeAmber</listEntry>
             <listEntry value="2">@Strings.ThemeMatrix</listEntry>
+            <listEntry value="3">@Strings.ThemeHigh</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.Scanlines" title="@Strings.ScanTitle">
@@ -19,6 +20,28 @@
         <settingConfig type="boolean"/>
     </setting>
     <setting propertyKey="@Properties.Holidays" title="@Strings.HolidaysTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.PhraseMode" title="@Strings.PhraseModeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.PhraseAuto</listEntry>
+            <listEntry value="1">@Strings.PhraseMine</listEntry>
+            <listEntry value="2">@Strings.PhraseMixed</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.Language" title="@Strings.LanguageTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.LangAuto</listEntry>
+            <listEntry value="1">@Strings.LangEn</listEntry>
+            <listEntry value="2">@Strings.LangPl</listEntry>
+            <listEntry value="3">@Strings.LangUa</listEntry>
+            <listEntry value="4">@Strings.LangJa</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.Phrase" title="@Strings.PhraseTitle">
+        <settingConfig type="alphaNumeric" maxLength="14"/>
+    </setting>
+    <setting propertyKey="@Properties.Typing" title="@Strings.TypingTitle">
         <settingConfig type="boolean"/>
     </setting>
     <setting propertyKey="@Properties.Lat" title="@Strings.LatTitle">

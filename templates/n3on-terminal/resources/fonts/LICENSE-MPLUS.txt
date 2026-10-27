@@ -1,0 +1,12 @@
+The bitmap font term_ja in this folder is a subset (kana + phrase glyphs) rendered
+from PixelMplus12-Bold by itouhiro (https://github.com/itouhiro/PixelMplus),
+based on M+ BITMAP FONTS. Original license follows.
+
+M+ FONTS                                Copyright (C) 2002-2013 M+ FONTS PROJECT
+
+These fonts are free software.
+Unlimited permission is granted to use, copy, and distribute them, with
+or without modification, either commercially or noncommercially.
+THESE FONTS ARE PROVIDED "AS IS" WITHOUT WARRANTY.
+
+http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/
