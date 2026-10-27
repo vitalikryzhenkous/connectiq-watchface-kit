@@ -5,11 +5,15 @@
 |---|---|
 | App type | Watch face |
 | Title | N3on Terminal |
-| Category | Watch faces → Digital |
 | Price | Free |
 | Supported devices | Forerunner 945, Forerunner 945 LTE, Forerunner 745 |
 | Permissions | None |
-| Icon | `icon-500.png` (the launcher icon is taken from the `.iq`) |
+| Cover image (500x500) | `cover-500.png` (or the bot `icon-500.png`) |
+| Hero image (1440x720) | `hero-1440x720.png` |
+| Category | Geek (or Retro) |
+| Collects user data / ANT+ / regional limits | No / No / No |
+| Monetization | No (the app doesn't ask for tips) |
+| App migration to new devices | No (layout is tuned for 240px MIP) |
 | Screenshots | `screenshots/*-240.png` (native) or `*-round.png` |
 | Source / support URL | https://github.com/vitalikryzhenkous/connectiq-watchface-kit |
 
