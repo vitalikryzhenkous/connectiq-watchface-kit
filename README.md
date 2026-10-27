@@ -2,7 +2,7 @@
 
 🇬🇧 English · 🇷🇺 [Русский](README.ru.md)
 
-[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
+[![CI](https://github.com/vitalikryzhenkous/connectiq-watchface-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/vitalikryzhenkous/connectiq-watchface-kit/actions/workflows/ci.yml) [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
 
 Build Garmin Connect IQ watch faces with [Claude Code](https://claude.com/claude-code). It comes with a ready skill, slash commands, pixel-font tooling and a complete reference face that has been verified on a real Forerunner 945.
 

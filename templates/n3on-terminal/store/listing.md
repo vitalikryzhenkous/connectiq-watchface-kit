@@ -125,11 +125,5 @@ Open source: хочете зробити власний циферблат? Ув
 
 ---
 
-## What's new (1.1.0)
-EN: N3o talks (EN/PL/UA/JA, typing animation, your own phrase), holiday looks, High contrast theme, bolder text and better contrast.
-PL: N3o mówi (EN/PL/UA/JA, animacja pisania, własne zdanie), stroje świąteczne, motyw wysokiego kontrastu, grubszy tekst.
-DE: N3o spricht (EN/PL/UA/JA, Tipp-Animation, eigener Satz), Feiertags-Looks, Hochkontrast-Theme, kräftigere Schrift.
-UK: N3o говорить (EN/PL/UA/JA, анімація друку, власна фраза), святкові образи, тема високого контрасту, жирніший текст.
-
 ## What's new (1.0.0)
 EN: First release. PL: Pierwsze wydanie. DE: Erste Version. UK: Перший реліз.

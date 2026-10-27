@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          sudo apt-get install -y fonts-dejavu-core
+          pip install -r mcp/requirements.txt pytest pyyaml
+      - name: Tests (MCP, bench, dataset logger)
+        run: python -m pytest -q -p no:cacheprovider mcp/tests bench/tests datasets/tests
+      - name: Lint reference face (manifest, resources, MIP palette)
+        run: python scripts/ciq_lint.py templates/n3on-terminal --mip
+      - name: Release gate (location reset, settings, naming, store assets, secrets)
+        run: python scripts/release_check.py templates/n3on-terminal
