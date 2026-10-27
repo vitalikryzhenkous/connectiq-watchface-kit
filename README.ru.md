@@ -17,6 +17,11 @@
 | `scripts/preview_n3on.py` | PNG-превью без симулятора |
 | `docs/build-and-run-mac.md` | Сборка, симулятор, sideload, публикация |
 
+## Что нужно
+- Claude Code (необязательно: части работают и без него), Python 3.9+ и `pip install pillow`
+- Для сборки: VS Code, расширение Monkey C, Connect IQ SDK Manager. Подробнее в `docs/build-and-run-mac.md`.
+- Новое: MCP-сервер (`mcp/`), бенчмарк ConnectIQ-Bench (`bench/`) и opt-in датасет (`datasets/`). Подробности в английском README.
+
 ## Использование
 ```bash
 git clone https://github.com/vitalikryzhenkous/connectiq-watchface-kit.git

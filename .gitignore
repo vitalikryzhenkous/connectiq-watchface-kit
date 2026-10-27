@@ -6,3 +6,8 @@ bin/
 *.der
 *.pem
 developer_key*
+
+# local-only fix dataset (opt-in, never commit)
+datasets/local/
+datasets/.optin
+.pytest_cache/

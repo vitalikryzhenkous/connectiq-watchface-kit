@@ -1,0 +1,21 @@
+id: t01_digital_time
+title: Digital time only (fr945)
+difficulty: 1
+devices: [fr945]
+compile: true
+prompt: |
+  Build a minimal digital watch face for the Forerunner 945.
+  - Show the current time as HH:MM in 24-hour format, centered on the screen, in a large built-in font.
+  - Black background, light text. No other elements.
+  - Redraw from onUpdate using System.getClockTime(). No timers.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: pattern, pattern: 'class\s+\w+\s+extends\s+WatchUi\.WatchFace', label: WatchFace subclass}
+  - {check: pattern, pattern: 'function\s+getInitialView', label: getInitialView}
+  - {check: pattern, pattern: 'function\s+onUpdate\s*\(', label: onUpdate}
+  - {check: uses_api, pattern: 'System\.getClockTime\(\)'}
+  - {check: pattern, pattern: '\.drawText\(', label: drawText}

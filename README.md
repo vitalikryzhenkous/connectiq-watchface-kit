@@ -6,6 +6,12 @@ Build Garmin Connect IQ watch faces with [Claude Code](https://claude.com/claude
 
 ![N3on Terminal](docs/n3on-preview.png)
 
+## What you need
+- [Claude Code](https://claude.com/claude-code) for the skill and commands. It's optional: the parts also work on their own, see below.
+- Python 3.9+ with `pip install pillow`
+- To build for a real watch: VS Code, the Monkey C extension, and Garmin's Connect IQ SDK Manager (free account). Setup guide: [docs/build-and-run-mac.md](docs/build-and-run-mac.md).
+- A Garmin watch is optional. The SDK simulator is enough to start.
+
 ## Quick start (5 minutes)
 ```bash
 git clone https://github.com/vitalikryzhenkous/connectiq-watchface-kit.git
@@ -39,6 +45,20 @@ ln -s "$PWD/.claude/skills/connectiq-watchface" ~/.claude/skills/connectiq-watch
 ln -s "$PWD"/.claude/commands/wf-*.md ~/.claude/commands/
 ```
 
+## MCP server (Claude Desktop, Cursor, any MCP client)
+```bash
+pip install -r mcp/requirements.txt
+claude mcp add connectiq -- python3 "$PWD/mcp/server.py"
+```
+Tools: `scaffold_face`, `gen_font`, `render_preview`, `lint`, `device_info`. It runs locally with no network access. Details are in [mcp/README.md](mcp/README.md).
+
+## ConnectIQ-Bench
+A small eval that tests whether an LLM can write a working Monkey C watch face. It has 10 tasks from easy to hard, static checks, and an optional compile step with your local SDK.
+```bash
+python3 bench/run.py --all --project templates/n3on-terminal
+```
+See [bench/README.md](bench/README.md).
+
 ## No Claude Code? Use the parts
 | Path | Use |
 |---|---|
@@ -46,6 +66,8 @@ ln -s "$PWD"/.claude/commands/wf-*.md ~/.claude/commands/
 | `scripts/gen_font.py` | Any TTF → crisp Connect IQ bitmap font (`.fnt` + `.png`) |
 | `scripts/gen_icon.py` | Pixel launcher icon |
 | `scripts/preview_n3on.py` | Layout preview and store screenshots |
+| `scripts/ciq_lint.py` | Manifest, resources and MIP 64-color palette checks (no SDK needed) |
+| `datasets/` | Opt-in, local-only log of your own compiler-error → fix pairs ([details](datasets/README.md)) |
 | `.claude/skills/connectiq-watchface/references/pitfalls.md` | Compiler, runtime and tooling gotchas |
 
 ## N3on Terminal (reference face)

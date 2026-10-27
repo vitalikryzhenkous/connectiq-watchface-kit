@@ -1,0 +1,26 @@
+id: t06_theme_setting
+title: Theme setting via properties (fr945)
+difficulty: 6
+devices: [fr945]
+compile: true
+prompt: |
+  Build a watch face for the Forerunner 945 with time (HH:MM) and a user-selectable color theme.
+  - Property id `Theme`, type number, default 0, exposed in resources/settings/settings.xml as a list
+    with three entries: 0 = Cyan, 1 = Amber, 2 = Green (each theme at least a main and an accent color).
+  - Read the property with Application.Properties.getValue("Theme"). It can throw or be null on first run
+  - {check: pattern, pattern: '<\s*0\b|>=\s*[\w.]*size\(\)|>=\s*3\b|>\s*2\b', label: range check}
+  - Apply changes live: implement onSettingsChanged() in the AppBase subclass, reload the theme and call
+    WatchUi.requestUpdate().
+  - Use only colors from the Forerunner 945's 64-color palette.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: setting_property, id: Theme, min_entries: 3}
+  - {check: pattern, pattern: 'function\s+onSettingsChanged\s*\(', label: onSettingsChanged}
+  - {check: pattern, pattern: 'requestUpdate\(\)', label: requestUpdate}
+  - {check: pattern, pattern: 'try\s*\{', label: try/catch around getValue}
+  - {check: pattern, pattern: '(<|>=|>)\s*\w*\.?size\(\)|<\s*\d+|>=\s*\d+|>\s*\d+', label: range check}
+  - {check: min_colors, n: 4}

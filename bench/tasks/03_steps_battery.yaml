@@ -1,0 +1,24 @@
+id: t03_steps_battery
+title: Steps and battery (fr945)
+difficulty: 3
+devices: [fr945]
+compile: true
+prompt: |
+  Build a watch face for the Forerunner 945 with time, steps and battery.
+  - Time as HH:MM (24h), large.
+  - Steps today from ActivityMonitor.getInfo(). The value can be null: show 0 then. Thousands as "8.4k".
+  - Battery percentage from System.getSystemStats().battery as a whole number with "%".
+  - Draw the battery text in a warning color when it is below 20%.
+  - Light colors on black.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: uses_api, pattern: 'ActivityMonitor\.getInfo\(\)'}
+  - {check: pattern, pattern: '\.steps\b', label: steps field}
+  - {check: null_guard, pattern: '\.steps\s*(!=|==)\s*null', label: steps null guard}
+  - {check: uses_api, pattern: 'System\.getSystemStats\(\)'}
+  - {check: pattern, pattern: '\.battery\b', label: battery field}
+  - {check: pattern, pattern: 'battery\s*<=?\s*\d+', label: low battery threshold}

@@ -1,0 +1,25 @@
+id: t07_mip_palette
+title: MIP 64-color palette only (fr945)
+difficulty: 7
+devices: [fr945]
+compile: true
+prompt: |
+  Build a colorful watch face for the Forerunner 945 (MIP display, 64 colors).
+  - Time (HH:MM) large, a date line, a steps line and a battery line, each in a different color.
+  - Draw at least one horizontal divider line and one filled rectangle (for example a battery bar).
+  - Every color must come from the 64-color MIP palette: each RGB channel is one of 00, 55, AA, FF.
+    Write colors as 0xRRGGBB literals. No Graphics.createColor, no alpha, no gradients, no dithering.
+  - At least five distinct colors in total.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: min_colors, n: 5}
+  - {check: forbid, pattern: 'createColor|setAlpha', label: no alpha}
+  - {check: forbid, pattern: 'setColor\(\s*\d{4,}', label: no decimal color literals}
+  - {check: pattern, pattern: '\.setColor\(', label: setColor}
+  - {check: pattern, pattern: '\.(drawLine|fillRectangle)\(', label: divider / filled rect}
+  - {check: uses_api, pattern: 'ActivityMonitor\.getInfo\(\)'}
+  - {check: uses_api, pattern: 'getSystemStats\(\)'}

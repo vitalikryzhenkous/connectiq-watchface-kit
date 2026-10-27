@@ -1,0 +1,25 @@
+id: t09_multi_device
+title: One face, two screens (fr945 + fenix7)
+difficulty: 9
+devices: [fr945, fenix7]
+compile: true
+prompt: |
+  Build a watch face that works on both the Forerunner 945 (240x240) and the fenix 7 (260x260).
+  - List both products in the manifest.
+  - Time (HH:MM) large and centered, date below it, battery percentage at the bottom, steps at the top.
+  - The layout must adapt to the screen: derive positions from dc.getWidth()/dc.getHeight() (or a computed
+    offset from the 240x240 design), no assumption that the screen is 240 pixels wide.
+  - Both are MIP displays: use only 64-color palette values (channels 00/55/AA/FF).
+  - Guard nullable values (steps).
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: pattern, pattern: 'getWidth\(\)', label: uses screen width}
+  - {check: pattern, pattern: 'getHeight\(\)', label: uses screen height}
+  - {check: uses_api, pattern: 'ActivityMonitor\.getInfo\(\)'}
+  - {check: null_guard, pattern: '\.steps\s*(!=|==)\s*null', label: steps null guard}
+  - {check: uses_api, pattern: 'getSystemStats\(\)'}
+  - {check: uses_api, pattern: 'Gregorian\.info\('}

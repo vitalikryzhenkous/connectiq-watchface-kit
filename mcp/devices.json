@@ -1,0 +1,13 @@
+{
+  "_note": "Bundled reference data, not generated from the Garmin SDK. Verify ids and screen sizes in SDK Manager -> Devices before adding them to a manifest; names and ids change between SDK releases.",
+  "devices": {
+    "fr945": {"name": "Forerunner 945", "id": "fr945", "screen_px": 240, "display": "MIP", "notes": "Reference device of the N3on Terminal template (launcher icon 40x40)."},
+    "fr955": {"name": "Forerunner 955 / Solar", "id": "fr955", "screen_px": 260, "display": "MIP", "notes": "MIP: keep colors to 00/55/AA/FF channels."},
+    "fr255": {"name": "Forerunner 255", "id": "fr255", "screen_px": 260, "display": "MIP", "notes": "MIP: keep colors to 00/55/AA/FF channels."},
+    "fr265": {"name": "Forerunner 265", "id": "fr265", "screen_px": 416, "display": "AMOLED", "notes": "AMOLED: prefer a black background and few lit pixels; sleep-mode burn-in rules apply."},
+    "fr965": {"name": "Forerunner 965", "id": "fr965", "screen_px": 454, "display": "AMOLED", "notes": "AMOLED: prefer a black background and few lit pixels; sleep-mode burn-in rules apply."},
+    "fenix7": {"name": "fenix 7", "id": "fenix7", "screen_px": 260, "display": "MIP", "notes": "MIP: keep colors to 00/55/AA/FF channels."},
+    "fenix7x": {"name": "fenix 7X", "id": "fenix7x", "screen_px": 280, "display": "MIP", "notes": "MIP: keep colors to 00/55/AA/FF channels."},
+    "venu2": {"name": "Venu 2", "id": "venu2", "screen_px": 416, "display": "AMOLED", "notes": "AMOLED: prefer a black background and few lit pixels; sleep-mode burn-in rules apply."}
+  }
+}

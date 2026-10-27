@@ -1,0 +1,25 @@
+id: t02_time_date_12_24
+title: Time and date, 12/24h aware (fr945)
+difficulty: 2
+devices: [fr945]
+compile: true
+prompt: |
+  Build a watch face for the Forerunner 945 showing time and date.
+  - Time as HH:MM, large. Follow the watch's 12/24-hour setting (System.getDeviceSettings().is24Hour).
+    In 12-hour mode 00:xx must show as 12:xx and 13:xx as 01:xx.
+  - Below the time, show the date as "WED 27 OCT" (day of week, day, month name abbreviations, upper case).
+    Use Toybox.Time.Gregorian.
+  - Black background, light text.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: uses_api, pattern: 'System\.getClockTime\(\)'}
+  - {check: uses_api, pattern: 'getDeviceSettings\(\)'}
+  - {check: pattern, pattern: '\bis24Hour\b', label: is24Hour}
+  - {check: pattern, pattern: '%\s*12\b|-\s*12\b', label: 12-hour conversion}
+  - {check: uses_api, pattern: 'Gregorian\.info\('}
+  - {check: pattern, pattern: 'import\s+Toybox\.Time\.Gregorian', label: imports Gregorian}
+  - {check: pattern, pattern: '\bday_of_week\b', label: weekday used}

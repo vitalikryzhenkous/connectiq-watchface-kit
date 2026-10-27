@@ -1,0 +1,30 @@
+id: t04_weather_null_safe
+title: Weather with null safety (fr945)
+difficulty: 4
+devices: [fr945]
+compile: true
+prompt: |
+  Build a watch face for the Forerunner 945 with time and current weather.
+  - Time as HH:MM, large.
+  - Under it show the temperature with a degree sign (for example "+21°") and a short text for the
+    condition (for example "rain"), from Toybox.Weather.getCurrentConditions().
+  - Respect the watch's temperature units (System.getDeviceSettings().temperatureUnits): Weather returns
+    Celsius, convert to Fahrenheit for UNIT_STATUTE.
+  - Weather data is null until the phone has synced, and some devices have no Weather module. The face must
+    never crash: guard the module (Toybox has :Weather), the conditions object and each field, and show "--"
+    when the temperature is unknown.
+  - manifest minApiLevel must be 3.2.0.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: uses_api, pattern: 'Weather\.getCurrentConditions\(\)'}
+  - {check: null_guard, pattern: 'Toybox\s+has\s+:Weather', label: module guard}
+  - {check: null_guard, pattern: 'getCurrentConditions\(\)\s*;\s*if\s*\(\s*\w+\s*(!=|==)\s*null', label: conditions null guard}
+  - {check: null_guard, pattern: '\.temperature\s*(!=|==)\s*null', label: temperature null guard}
+  - {check: forbid, pattern: 'getCurrentConditions\(\)\s*\.', label: no unguarded chained access}
+  - {check: pattern, pattern: 'temperatureUnits', label: units setting}
+  - {check: pattern, pattern: 'UNIT_STATUTE', label: Fahrenheit path}
+  - {check: pattern, pattern: '"--"', label: placeholder text}

@@ -33,5 +33,11 @@ Working kit for Garmin watch faces. Reference project: `templates/n3on-terminal/
 - Properties and settings: `Application.Properties.getValue(key)`, applied in `AppBase.onSettingsChanged()`
 - Persisted values: `Application.Storage`
 
+## Tools in this repo
+- `python3 scripts/ciq_lint.py <dir> --mip` checks the manifest, resources and palette. Run it before telling the user to build.
+- `mcp/server.py` is an MCP server with the same tools for other clients.
+- `bench/run.py` runs ConnectIQ-Bench to score a generated face against a task.
+- `scripts/log_fix.py` is an opt-in dataset logger. `/wf-debug` calls it only if `datasets/.optin` exists.
+
 ## Commands in this repo
 `/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-store`. They live in `.claude/commands/`.

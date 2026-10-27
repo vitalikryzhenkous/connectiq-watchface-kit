@@ -1,0 +1,29 @@
+id: t10_amoled_low_power
+title: AMOLED always-on low-power mode (fr965)
+difficulty: 10
+devices: [fr965]
+compile: true
+prompt: |
+  Build a watch face for the Forerunner 965 (454x454 AMOLED).
+  - Active mode: time (HH:MM), date, steps and battery, in full color on black.
+  - Low-power (always-on) mode, entered via onEnterSleep() and left via onExitSleep():
+    show only the time, drawn in a single dim color, with at most about 10% of the pixels lit.
+    No large filled areas and no full-screen fills other than the black clear.
+  - Burn-in protection: in low-power mode shift the time's position by a few pixels every minute
+    (derive the offset from the current minute). Check System.getDeviceSettings().requiresBurnInProtection.
+  - Redraw once per minute in low-power mode; never use Timer.
+  - AMOLED has no 64-color restriction.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - {check: pattern, pattern: 'function\s+onEnterSleep\s*\(', label: onEnterSleep}
+  - {check: pattern, pattern: 'function\s+onExitSleep\s*\(', label: onExitSleep}
+  - {check: pattern, pattern: '(?i)(awake|asleep|sleeping|inSleep|lowPower)', label: low-power flag}
+  - {check: pattern, pattern: 'requiresBurnInProtection', label: burn-in API}
+  - {check: pattern, pattern: '\b\w*(clock|time)\w*\.min\b', label: minute-based shift}
+  - {check: forbid, pattern: 'fillRectangle\(\s*0\s*,\s*0\s*,\s*dc\.getWidth', label: no full-screen fill}
+  - {check: forbid, pattern: 'Timer\.Timer|new\s+Timer', label: no Timer}
+  - {check: uses_api, pattern: 'ActivityMonitor\.getInfo\(\)'}
+  - {check: uses_api, pattern: 'getSystemStats\(\)'}

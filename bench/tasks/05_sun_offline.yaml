@@ -1,0 +1,28 @@
+id: t05_sun_offline
+title: Sunrise and sunset, computed offline (fr945)
+difficulty: 5
+devices: [fr945]
+compile: true
+prompt: |
+  Build a watch face for the Forerunner 945 with time and today's sunrise and sunset times.
+  - Compute sunrise and sunset on the watch from latitude/longitude and the date (for example the NOAA
+    algorithm), using Toybox.Math. No network requests, no permissions in the manifest.
+  - Get the position from the Weather observation location, falling back to
+    Activity.getActivityInfo().currentLocation. Both can be null: then show "--:--" and do not crash.
+  - Handle polar day/night (the algorithm yields no result): show "--:--".
+  - Follow the 12/24-hour device setting for the displayed sunrise/sunset times.
+  - Do not recompute on every redraw: cache the result for the current day and position.
+required:
+  - manifest_valid
+  - resources_valid
+  - devices_in_manifest
+  - no_permissions
+  - mip_palette
+  - {check: forbid, pattern: 'makeWebRequest|Communications', label: no network}
+  - {check: pattern, pattern: 'Math\.(acos|asin|atan|cos|sin|tan)\(', label: trig math}
+  - {check: pattern, pattern: 'currentLocation|observationLocationPosition|Position\.getInfo', label: position source}
+  - {check: pattern, pattern: '\.toDegrees\(\)', label: position to degrees}
+  - {check: null_guard, pattern: '\b\w*(loc|pos)\w*\s*(!=|==)\s*null', label: position null guard}
+  - {check: pattern, pattern: 'return\s+null', label: polar day/night result}
+  - {check: pattern, pattern: '"--:--"', label: placeholder text}
+  - {check: pattern, pattern: '\bis24Hour\b', label: is24Hour}
