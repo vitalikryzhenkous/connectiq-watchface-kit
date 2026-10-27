@@ -3,6 +3,8 @@
     <iq:application id="304e5cd6a370442d97317e23bbed64c7" type="watchface" name="@Strings.AppName" entry="N3onApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="3.2.0">
         <iq:products>
             <iq:product id="fr945"/>
+            <iq:product id="fr945lte"/>
+            <iq:product id="fr745"/>
         </iq:products>
         <iq:permissions/>
         <iq:languages>

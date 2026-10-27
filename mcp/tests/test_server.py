@@ -172,7 +172,7 @@ def test_device_info():
     assert "SDK Manager" in d["verify"]
     assert server.device_info(" FENIX7X ")["screen_px"] == 280
     data = json.loads((SERVER.parent / "devices.json").read_text())["devices"]
-    assert set(data) == {"fr945", "fr955", "fr255", "fr265", "fr965", "fenix7", "fenix7x", "venu2"}
+    assert set(data) == {"fr945", "fr945lte", "fr745", "fr955", "fr255", "fr265", "fr965", "fenix7", "fenix7x", "venu2"}
     for k, v in data.items():
         assert set(v) == {"name", "id", "screen_px", "display", "notes"} and v["id"] == k
 

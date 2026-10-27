@@ -7,7 +7,7 @@
 | Title | N3on Terminal |
 | Category | Watch faces → Digital |
 | Price | Free |
-| Supported devices | Forerunner 945 (more coming) |
+| Supported devices | Forerunner 945, Forerunner 945 LTE, Forerunner 745 |
 | Permissions | None |
 | Icon | `icon-500.png` (the launcher icon is taken from the `.iq`) |
 | Screenshots | `screenshots/*-240.png` (native) or `*-round.png` |

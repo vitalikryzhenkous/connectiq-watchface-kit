@@ -8,6 +8,8 @@
     "fr965": {"name": "Forerunner 965", "id": "fr965", "screen_px": 454, "display": "AMOLED", "notes": "AMOLED: prefer a black background and few lit pixels; sleep-mode burn-in rules apply."},
     "fenix7": {"name": "fenix 7", "id": "fenix7", "screen_px": 260, "display": "MIP", "notes": "MIP: keep colors to 00/55/AA/FF channels."},
     "fenix7x": {"name": "fenix 7X", "id": "fenix7x", "screen_px": 280, "display": "MIP", "notes": "MIP: keep colors to 00/55/AA/FF channels."},
-    "venu2": {"name": "Venu 2", "id": "venu2", "screen_px": 416, "display": "AMOLED", "notes": "AMOLED: prefer a black background and few lit pixels; sleep-mode burn-in rules apply."}
+    "venu2": {"name": "Venu 2", "id": "venu2", "screen_px": 416, "display": "AMOLED", "notes": "AMOLED: prefer a black background and few lit pixels; sleep-mode burn-in rules apply."},
+    "fr945lte": {"name": "Forerunner 945 LTE", "id": "fr945lte", "screen_px": 240, "display": "MIP", "notes": "Same 240px MIP layout as fr945. Verify id and watch-face memory limit in SDK Manager."},
+    "fr745": {"name": "Forerunner 745", "id": "fr745", "screen_px": 240, "display": "MIP", "notes": "Same 240px MIP layout as fr945. Verify id and watch-face memory limit in SDK Manager."}
   }
 }
