@@ -226,11 +226,11 @@ if __name__ == "__main__":
         os.makedirs(FRAMES, exist_ok=True)
         shots = [
             ("01-neon-day", PALS[0], "10:08", "normal", "hi there", True),
-            ("02-neon-night", PALS[0], "21:24", "night", "sleep tight", False),
-            ("03-amber", PALS[1], "07:58", "morning", "good morning", False),
-            ("04-green-goal", PALS[2], "18:30", "happy", "goal smashed!", False),
-            ("05-neon-rain", PALS[0], "13:15", "rain", "take umbrella", False),
-            ("06-neon-notify", PALS[0], "09:42", "notify", "3 new msg", False),
+            ("02-neon-night", PALS[0], "21:24", "night", "sleep tight", True),
+            ("03-amber", PALS[1], "07:58", "morning", "good morning", True),
+            ("04-green-goal", PALS[2], "18:30", "happy", "goal smashed!", True),
+            ("05-neon-rain", PALS[0], "13:15", "rain", "take umbrella", True),
+            ("06-neon-notify", PALS[0], "09:42", "notify", "3 new msg", True),
             ("07-high-contrast", PALS[3], "16:05", "normal", "hejka!", False),
         ]
         for name, pal, t, mood, ph, gl in shots:
