@@ -18,7 +18,7 @@
 ## EN (default)
 **Short:** Cyberpunk terminal watch face with a pixel bot that reacts to your day.
 
-A retro-futuristic command line on your wrist. Neon time with a glitch burst on wrist raise, scanlines and a tiny original pixel robot that sleeps after sunset, cheers when you hit your step goal and looks tired when the battery is low.
+A retro-futuristic command line on your wrist. Glitched neon time, scanlines and a tiny original pixel robot that sleeps after sunset, cheers when you hit your step goal and looks tired when the battery is low.
 
 Shows:
 • Time (follows your 12/24h setting) and date
@@ -33,7 +33,7 @@ Shows:
 
 Settings (Garmin Connect app → Connect IQ):
 • Themes: Neon, Amber CRT, Green terminal, High contrast
-• Scanlines on/off, glitch on/off, bot on/off, bot emotions on/off, holiday looks on/off
+• Scanlines on/off, glitch (always / on wrist raise / off), bot on/off, bot emotions on/off, holiday looks on/off
 • What the bot says (auto / my phrase / mixed), bot language, my phrase, typing animation
 • Latitude/Longitude for sunrise and sunset (0 = automatic)
 
@@ -49,7 +49,7 @@ Not affiliated with or endorsed by Garmin.
 ## PL
 **Krótko:** Cyberpunkowa tarcza w stylu terminala z pikselowym robotem, który reaguje na Twój dzień.
 
-Retro-futurystyczny wiersz poleceń na nadgarstku. Neonowy czas z efektem glitch po podniesieniu ręki, linie skanowania i mały, oryginalny pikselowy robot: zasypia po zachodzie słońca, cieszy się po osiągnięciu celu kroków i jest zmęczony przy słabej baterii.
+Retro-futurystyczny wiersz poleceń na nadgarstku. Neonowy czas z efektem glitch, linie skanowania i mały, oryginalny pikselowy robot: zasypia po zachodzie słońca, cieszy się po osiągnięciu celu kroków i jest zmęczony przy słabej baterii.
 
 Wyświetla:
 • Godzinę (zgodnie z ustawieniem 12/24 h) i datę
@@ -62,7 +62,7 @@ Wyświetla:
 • N3o mówi: krótkie zdania reagujące na Twój dzień, wpisywane po podniesieniu ręki (EN, PL, UA, JA) lub Twoje własne
 • Motyw wysokiego kontrastu na mocne słońce i słabszy wzrok
 
-Ustawienia (Garmin Connect → Connect IQ): 4 motywy (Neon, Amber CRT, Green terminal, wysoki kontrast); linie skanowania, glitch, robot, emocje robota, stroje świąteczne — wł./wył.; co mówi robot (auto / moje zdanie / mieszane), język robota, własne zdanie, animacja pisania; szerokość/długość geograficzna dla wschodu i zachodu (0 = auto). Jeśli widać „no gps fix”, uruchom raz dowolną aktywność z GPS lub wpisz współrzędne.
+Ustawienia (Garmin Connect → Connect IQ): 4 motywy (Neon, Amber CRT, Green terminal, wysoki kontrast); linie skanowania, robot, emocje robota, stroje świąteczne — wł./wył.; glitch (zawsze / po podniesieniu ręki / wył.); co mówi robot (auto / moje zdanie / mieszane), język robota, własne zdanie, animacja pisania; szerokość/długość geograficzna dla wschodu i zachodu (0 = auto). Jeśli widać „no gps fix”, uruchom raz dowolną aktywność z GPS lub wpisz współrzędne.
 
 Oszczędza baterię: animacje tylko, gdy zegarek jest aktywny.
 
@@ -75,7 +75,7 @@ Projekt niezależny, niepowiązany z firmą Garmin.
 ## DE
 **Kurz:** Cyberpunk-Terminal-Zifferblatt mit einem Pixel-Roboter, der auf deinen Tag reagiert.
 
-Eine retro-futuristische Kommandozeile am Handgelenk. Neon-Uhrzeit mit Glitch-Effekt beim Handgelenk-Heben, Scanlines und ein kleiner, eigens gestalteter Pixel-Roboter: Er schläft nach Sonnenuntergang, jubelt bei erreichtem Schrittziel und wirkt müde bei schwachem Akku.
+Eine retro-futuristische Kommandozeile am Handgelenk. Neon-Uhrzeit mit Glitch-Effekt, Scanlines und ein kleiner, eigens gestalteter Pixel-Roboter: Er schläft nach Sonnenuntergang, jubelt bei erreichtem Schrittziel und wirkt müde bei schwachem Akku.
 
 Anzeige:
 • Uhrzeit (folgt der 12/24-h-Einstellung) und Datum
@@ -88,7 +88,7 @@ Anzeige:
 • N3o spricht: kurze Sätze passend zu deinem Tag, beim Handgelenk-Heben eingetippt (EN, PL, UA, JA) oder dein eigener Satz
 • Hochkontrast-Theme für grelle Sonne und schwächere Augen
 
-Einstellungen (Garmin Connect → Connect IQ): 4 Themes (Neon, Amber CRT, Green terminal, Hochkontrast); Scanlines, Glitch, Roboter, Roboter-Emotionen, Feiertags-Looks — ein/aus; was der Roboter sagt (auto / mein Satz / gemischt), Sprache, eigener Satz, Tipp-Animation; Breiten-/Längengrad für Sonnenauf- und -untergang (0 = automatisch). Steht „no gps fix“ da: einmal eine GPS-Aktivität starten oder Koordinaten eintragen.
+Einstellungen (Garmin Connect → Connect IQ): 4 Themes (Neon, Amber CRT, Green terminal, Hochkontrast); Scanlines, Roboter, Roboter-Emotionen, Feiertags-Looks — ein/aus; Glitch (immer / beim Handgelenk-Heben / aus); was der Roboter sagt (auto / mein Satz / gemischt), Sprache, eigener Satz, Tipp-Animation; Breiten-/Längengrad für Sonnenauf- und -untergang (0 = automatisch). Steht „no gps fix“ da: einmal eine GPS-Aktivität starten oder Koordinaten eintragen.
 
 Akkuschonend: Animationen nur, wenn die Uhr aktiv ist.
 
@@ -101,7 +101,7 @@ Unabhängiges Projekt, nicht mit Garmin verbunden.
 ## UK
 **Коротко:** Кіберпанк-циферблат у стилі терміналу з піксельним роботом, який реагує на ваш день.
 
-Ретрофутуристичний командний рядок на зап'ясті. Неоновий час з glitch-ефектом при піднятті руки, scanlines і маленький оригінальний піксельний робот: засинає після заходу сонця, радіє, коли виконано ціль кроків, і втомлений, коли батарея сідає.
+Ретрофутуристичний командний рядок на зап'ясті. Неоновий час з glitch-ефектом, scanlines і маленький оригінальний піксельний робот: засинає після заходу сонця, радіє, коли виконано ціль кроків, і втомлений, коли батарея сідає.
 
 Показує:
 • Час (за налаштуванням 12/24 год) і дату
@@ -114,7 +114,7 @@ Unabhängiges Projekt, nicht mit Garmin verbunden.
 • N3o говорить: короткі фрази, що реагують на ваш день, друкуються при піднятті руки (EN, PL, UA, JA) або ваша власна фраза
 • Тема високого контрасту для яскравого сонця та слабшого зору
 
-Налаштування (Garmin Connect → Connect IQ): 4 теми (Neon, Amber CRT, Green terminal, високий контраст); scanlines, glitch, робот, емоції робота, святкові образи — увімк./вимк.; що каже робот (авто / моя фраза / змішано), мова робота, власна фраза, анімація друку; широта/довгота для сходу й заходу сонця (0 = авто). Якщо видно «no gps fix», запустіть будь-яку GPS-активність або введіть координати.
+Налаштування (Garmin Connect → Connect IQ): 4 теми (Neon, Amber CRT, Green terminal, високий контраст); scanlines, робот, емоції робота, святкові образи — увімк./вимк.; glitch (завжди / при піднятті руки / вимк.); що каже робот (авто / моя фраза / змішано), мова робота, власна фраза, анімація друку; широта/довгота для сходу й заходу сонця (0 = авто). Якщо видно «no gps fix», запустіть будь-яку GPS-активність або введіть координати.
 
 Економить батарею: анімація лише коли годинник активний.
 

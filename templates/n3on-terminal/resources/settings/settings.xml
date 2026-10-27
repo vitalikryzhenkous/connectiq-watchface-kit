@@ -11,7 +11,11 @@
         <settingConfig type="boolean"/>
     </setting>
     <setting propertyKey="@Properties.Glitch" title="@Strings.GlitchTitle">
-        <settingConfig type="boolean"/>
+        <settingConfig type="list">
+            <listEntry value="2">@Strings.GlitchAlways</listEntry>
+            <listEntry value="1">@Strings.GlitchWake</listEntry>
+            <listEntry value="0">@Strings.GlitchOff</listEntry>
+        </settingConfig>
     </setting>
     <setting propertyKey="@Properties.ShowBot" title="@Strings.BotTitle">
         <settingConfig type="boolean"/>

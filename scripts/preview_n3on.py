@@ -160,7 +160,7 @@ def holiday_overlay(d, x, y, pal, holiday, mood):
 
 
 def face(pal, time="21:24", mood="night", wx=("+8°", "cloudy"), raw=False, holiday=None,
-         phrase="hi there", glitch=False, online=True):
+         phrase="hi there", glitch=True, online=True):
     img = Image.new("RGB", (240, 240), (0, 0, 0))
     d = ImageDraw.Draw(img)
     hc = pal is PALS[3]

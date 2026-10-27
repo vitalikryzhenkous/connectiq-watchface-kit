@@ -23,7 +23,7 @@ class N3onView extends WatchUi.WatchFace {
     // settings
     private var _pal = Theme.PALETTES[0];
     private var _scan = true;
-    private var _glitch = true;
+    private var _glitch = 2;     // 0 off, 1 on wake (~3 s), 2 always
     private var _showBot = true;
     private var _manLoc = null; // manual [lat, lon] from settings
     private var _emotions = true;
@@ -70,10 +70,14 @@ class N3onView extends WatchUi.WatchFace {
         }
         _pal = Theme.PALETTES[theme];
         _scan = readProp("Scanlines", true);
-        _glitch = readProp("Glitch", true);
+        var g = readProp("Glitch", 2);
+        if (g instanceof Boolean) {
+            g = g ? 2 : 0; // older boolean setting
+        }
+        _glitch = (g instanceof Number && g >= 0 && g <= 2) ? g : 2;
         if (theme == Theme.HIGH_CONTRAST) {
             _scan = false;
-            _glitch = false;
+            _glitch = 0;
         }
         _showBot = readProp("ShowBot", true);
         _emotions = readProp("Emotions", true);
@@ -146,14 +150,14 @@ class N3onView extends WatchUi.WatchFace {
         dc.drawLine(_ox + 42, _oy + 37, _ox + 198, _oy + 37);
         // first line (bot phrase) is drawn at the end, once the mood is known
 
-        // time; glitch burst for ~3 s after waking up, then clean
+        // time with glitch shadow: always, or only ~3 s after waking up
         var h = clock.hour;
         if (!settings.is24Hour) {
             h = h % 12;
             if (h == 0) { h = 12; }
         }
         var timeStr = h.format("%02d") + ":" + clock.min.format("%02d");
-        if (_glitch && _awake && (nowSec - _wakeSec) < 3) {
+        if (_glitch == 2 || (_glitch == 1 && _awake && (nowSec - _wakeSec) < 3)) {
             dc.setColor(_pal[Theme.ACCENT], tr);
             dc.drawText(_ox + 21, _oy + 59, _fBig, timeStr, Graphics.TEXT_JUSTIFY_LEFT);
             var shift = (clock.min % 4) * 5;

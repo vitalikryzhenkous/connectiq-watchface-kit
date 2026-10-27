@@ -22,6 +22,9 @@
     <string id="LangJa">日本語</string>
     <string id="PhraseTitle">My phrase (max 14: latin, PL, UA, kana)</string>
     <string id="TypingTitle">Typing animation on wake</string>
+    <string id="GlitchAlways">Always</string>
+    <string id="GlitchWake">On wrist raise (3 s)</string>
+    <string id="GlitchOff">Off</string>
     <string id="LatTitle">Latitude for sunrise (0 = auto)</string>
     <string id="LonTitle">Longitude for sunrise (0 = auto)</string>
 </strings>

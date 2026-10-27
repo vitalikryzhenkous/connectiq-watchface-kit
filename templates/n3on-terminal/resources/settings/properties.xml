@@ -1,7 +1,7 @@
 <properties>
     <property id="Theme" type="number">0</property>
     <property id="Scanlines" type="boolean">true</property>
-    <property id="Glitch" type="boolean">true</property>
+    <property id="Glitch" type="number">2</property>
     <property id="ShowBot" type="boolean">true</property>
     <property id="Emotions" type="boolean">true</property>
     <property id="Holidays" type="boolean">true</property>
