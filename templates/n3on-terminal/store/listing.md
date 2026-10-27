@@ -26,6 +26,7 @@ Shows:
 • Sunrise and sunset, calculated on the watch
 • Steps and battery
 • Phone connection status
+• 8 bot emotions: rain, notifications, running, morning coffee and more
 
 Settings (Garmin Connect app → Connect IQ):
 • 3 themes: Neon, Amber CRT, Green terminal
@@ -51,6 +52,7 @@ Wyświetla:
 • Wschód i zachód słońca, liczone na zegarku
 • Kroki i baterię
 • Status połączenia z telefonem
+• 8 emocji robota: deszcz, powiadomienia, bieg, poranna kawa i więcej
 
 Ustawienia (Garmin Connect → Connect IQ): 3 motywy (Neon, Amber CRT, Green terminal), linie skanowania, glitch, robot — wł./wył.
 
@@ -73,6 +75,7 @@ Anzeige:
 • Sonnenauf- und -untergang, direkt auf der Uhr berechnet
 • Schritte und Akku
 • Verbindungsstatus zum Smartphone
+• 8 Roboter-Emotionen: Regen, Benachrichtigungen, Laufen, Morgenkaffee und mehr
 
 Einstellungen (Garmin Connect → Connect IQ): 3 Themes (Neon, Amber CRT, Green terminal), Scanlines, Glitch, Roboter — ein/aus.
 
@@ -95,6 +98,7 @@ Unabhängiges Projekt, nicht mit Garmin verbunden.
 • Схід і захід сонця, розраховані на годиннику
 • Кроки і батарею
 • Статус з'єднання з телефоном
+• 8 емоцій робота: дощ, сповіщення, біг, ранкова кава та інше
 
 Налаштування (Garmin Connect → Connect IQ): 3 теми (Neon, Amber CRT, Green terminal), scanlines, glitch, робот — увімк./вимк.
 

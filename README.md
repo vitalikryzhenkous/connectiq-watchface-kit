@@ -77,6 +77,10 @@ See [bench/README.md](bench/README.md).
 ## N3on Terminal (reference face)
 A cyberpunk terminal face with glitched time, weather, sunrise and sunset (computed on the watch), steps, battery, phone status, and an original pixel bot that sleeps at night, cheers at your step goal and looks tired at low battery. It has 3 themes and phone settings, needs no permissions and collects no data.
 
+N3o has 8 emotions, picked automatically from data the face already reads: normal, night, low battery, step goal, rain, notification, running and morning.
+
+![N3o emotions](docs/n3o-emotions.png)
+
 ## Security
 - Never commit your developer key (`developer_key`, `*.der`, `*.pem`). These are already in `.gitignore`. If you lose it, you can't update your store app.
 - Publishing a fork? Generate a new app UUID: `python3 -c "import uuid;print(uuid.uuid4().hex)"`.

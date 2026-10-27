@@ -1,6 +1,6 @@
 """Pixel-accurate PNG preview of the N3on Terminal face (3 themes side by side).
 
-Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>]
+Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>] [--moods <sheet.png>]
 
 --frames also writes store screenshots: native 240x240 PNGs (like simulator
 screenshots) plus 2x upscaled round versions.
@@ -57,32 +57,69 @@ class Font:
 small, big = Font("term_small"), Font("term_big")
 
 
-def bot(d, x, y, pal, mood, img):
+def bot(d, x, y, pal, mood, img, phase=True):
+    """Mirror of source/Bot.mc. mood: normal, low, night, happy, rain, notify, run, morning."""
     dim = mood in ("low", "night")
-    r = lambda x0, y0, w, h, c: d.rectangle([x0, y0, x0 + w - 1, y0 + h - 1], fill=rgb(c))
-    r(x + 16, y, 6, 6, pal[DM] if dim else pal[H]); r(x + 18, y + 6, 2, 10, pal[DM] if dim else pal[H])
+    WH, RD = 0xFFFFFF, 0xFF0000
+    r = lambda x0, y0, w, h, c: d.rectangle([x + x0, y + y0, x + x0 + w - 1, y + y0 + h - 1], fill=rgb(c))
+    if mood == "rain":
+        r(18, 6, 2, 12, pal[DM]); r(8, -2, 22, 4, pal[A]); r(0, 2, 38, 4, pal[A]); r(-2, 6, 42, 3, pal[A])
+        for a, b in ((-3, 13), (41, 15), (-5, 22), (42, 26)):
+            r(a, b, 1, 4, pal[P])
+    elif mood == "low":
+        r(18, 8, 2, 8, pal[DM]); r(20, 4, 6, 6, pal[DM])
+    else:
+        ant = pal[DM] if mood == "night" else (pal[A] if (mood == "notify" and phase) else pal[H])
+        r(16, 0, 6, 6, ant); r(18, 6, 2, 10, ant)
+    if mood == "notify":
+        for a, b in ((12, -3), (24, -3), (10, 2), (26, 2)):
+            r(a, b, 2, 2, pal[H])
+        r(-18, -2, 12, 13, WH); r(-8, 11, 3, 3, WH); r(-13, 0, 2, 6, pal[A]); r(-13, 8, 2, 2, pal[A])
     d.rectangle([x, y + 16, x + 37, y + 43], outline=rgb(pal[A]), width=2)
-    r(x + 5, y + 22, 28, 12, pal[DM] if mood == "night" else pal[P])
+    r(5, 22, 28, 12, pal[DM] if mood == "night" else pal[P])
     if mood == "happy":
-        for ex in (x + 10, x + 23):
-            r(ex + 1, y + 25, 3, 2, 0); r(ex, y + 27, 2, 3, 0); r(ex + 3, y + 27, 2, 3, 0)
+        for ex in (10, 23):
+            r(ex + 1, 25, 3, 2, 0); r(ex, 27, 2, 3, 0); r(ex + 3, 27, 2, 3, 0)
     elif mood == "night":
-        r(x + 10, y + 28, 5, 2, 0); r(x + 23, y + 28, 5, 2, 0)
+        r(10, 28, 5, 2, 0); r(23, 28, 5, 2, 0)
+    elif mood in ("low", "morning"):
+        r(10, 28, 5, 3, 0); r(23, 28, 5, 3, 0)
+    elif mood == "notify":
+        r(8, 25, 5, 6, 0); r(21, 25, 5, 6, 0)
     else:
-        r(x + 10, y + 25, 5, 6, 0); r(x + 23, y + 25, 5, 6, 0)
-    if mood == "happy":
-        r(x + 8, y + 37, 22, 2, pal[A]); r(x + 10, y + 39, 18, 2, pal[A])
+        r(10, 25, 5, 6, 0); r(23, 25, 5, 6, 0)
+    if mood in ("happy", "run"):
+        r(8, 37, 22, 2, pal[A]); r(10, 39, 18, 2, pal[A])
+    elif mood == "morning":
+        r(15, 36, 8, 6, pal[A]); r(17, 38, 4, 2, 0)
     elif dim:
-        r(x + 14, y + 38, 10, 2, pal[DM])
+        r(14, 38, 10, 2, pal[DM])
     else:
-        r(x + 11, y + 37, 16, 3, pal[A])
-    r(x + 6, y + 48, 26, 14, pal[BT])
+        r(11, 37, 16, 3, pal[A])
+    r(6, 48, 26, 14, pal[BT])
+    if mood == "low":
+        r(12, 52, 13, 6, 0); d.rectangle([x + 12, y + 52, x + 24, y + 57], outline=rgb(pal[A]))
+        r(25, 54, 2, 2, pal[A]); r(13, 53, 3, 4, RD)
     if mood == "happy":
-        r(x - 2, y + 42, 3, 10, pal[P]); r(x + 37, y + 42, 3, 10, pal[P]); r(x + 1, y + 49, 5, 3, pal[P]); r(x + 32, y + 49, 5, 3, pal[P])
+        r(-2, 40, 3, 12, pal[P]); r(37, 40, 3, 12, pal[P]); r(1, 49, 5, 3, pal[P]); r(32, 49, 5, 3, pal[P])
+    elif mood == "run":
+        r(-4, 46, 8, 3, pal[P]); r(32, 54, 8, 3, pal[P])
+    elif mood == "morning":
+        r(-2, 50, 8, 3, pal[P]); r(32, 50, 9, 3, pal[P])
     else:
-        r(x - 2, y + 50, 8, 3, pal[P]); r(x + 32, y + 50, 8, 3, pal[P])
-    r(x + 8, y + 63, 6, 5, pal[P]); r(x + 24, y + 63, 6, 5, pal[P])
-    if mood == "night":
+        r(-2, 50, 8, 3, pal[P]); r(32, 50, 8, 3, pal[P])
+    if mood == "run":
+        r(2, 63, 6, 5, pal[P]); r(30, 61, 6, 5, pal[P])
+        for a, b in ((-14, 58), (-18, 62), (-12, 66)):
+            r(a, b, 8, 1, pal[DM])
+    else:
+        r(8, 63, 6, 5, pal[P]); r(24, 63, 6, 5, pal[P])
+    if mood == "happy":
+        for a, b in ((-8, -2), (42, 2), (44, 30)):
+            r(a + 2, b, 2, 6, pal[H]); r(a, b + 2, 6, 2, pal[H])
+    elif mood == "morning":
+        r(40, 45, 8, 8, WH); r(48, 47, 2, 4, WH); r(42, 39, 1, 4, pal[DM]); r(45, 37, 1, 5, pal[DM])
+    elif mood == "night":
         small.draw(img, x + 27, y - 4, "z", pal[DM])
 
 
@@ -149,3 +186,14 @@ if __name__ == "__main__":
             face(pal, t, mood, raw=True).save(os.path.join(FRAMES, f"{name}-240.png"))
             face(pal, t, mood).save(os.path.join(FRAMES, f"{name}-round.png"))
         print("frames in", FRAMES)
+
+    if "--moods" in sys.argv:
+        moods_out = sys.argv[sys.argv.index("--moods") + 1]
+        names = ["normal", "night", "low", "happy", "rain", "notify", "run", "morning"]
+        cells = [face(PALS[0], "10:08", m) for m in names]
+        cw, ch = cells[0].size
+        grid = Image.new("RGB", (cw * 4 + 50, ch * 2 + 30), (12, 12, 12))
+        for k, cimg in enumerate(cells):
+            grid.paste(cimg, (10 + (k % 4) * (cw + 10), 10 + (k // 4) * (ch + 10)))
+        grid.save(moods_out)
+        print("moods sheet:", moods_out)

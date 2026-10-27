@@ -7,6 +7,7 @@
     <string id="ScanTitle">Scanlines</string>
     <string id="GlitchTitle">Glitch effect</string>
     <string id="BotTitle">Show bot</string>
+    <string id="EmotionsTitle">Bot emotions (rain, notifications, activity, morning)</string>
     <string id="LatTitle">Latitude for sunrise (0 = auto)</string>
     <string id="LonTitle">Longitude for sunrise (0 = auto)</string>
 </strings>

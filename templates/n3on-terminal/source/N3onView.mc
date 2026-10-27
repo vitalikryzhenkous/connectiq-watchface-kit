@@ -25,6 +25,12 @@ class N3onView extends WatchUi.WatchFace {
     private var _glitch = true;
     private var _showBot = true;
     private var _manLoc = null; // manual [lat, lon] from settings
+    private var _emotions = true;
+
+    // step-rate tracking for the RUN mood (sampled once per minute)
+    private var _rateMin = -1;
+    private var _rateSteps = 0;
+    private var _active = false;
 
     // sunrise / sunset cache
     private var _sunKey = null;
@@ -54,6 +60,7 @@ class N3onView extends WatchUi.WatchFace {
         _scan = readProp("Scanlines", true);
         _glitch = readProp("Glitch", true);
         _showBot = readProp("ShowBot", true);
+        _emotions = readProp("Emotions", true);
         var lat = readProp("Lat", 0.0);
         var lon = readProp("Lon", 0.0);
         _manLoc = null;
@@ -197,19 +204,60 @@ class N3onView extends WatchUi.WatchFace {
 
         // bot
         if (_showBot) {
-            var mood = Bot.NORMAL;
             var nowMin = clock.hour * 60 + clock.min;
-            var goal = act.stepGoal;
-            if (battery < 20) {
-                mood = Bot.LOW;
-            } else if (_sunRise != null && _sunSet != null && (nowMin < _sunRise || nowMin >= _sunSet)) {
-                mood = Bot.NIGHT;
-            } else if (goal != null && goal > 0 && steps >= goal) {
-                mood = Bot.HAPPY;
-            }
+            updateActivity(nowMin, steps);
+            var mood = pickMood(nowMin, battery, steps, act.stepGoal, settings, kind);
             var blink = _awake && (clock.sec % 7 == 0);
-            Bot.draw(dc, _ox + 178, _oy + 46, _pal, mood, blink, _fSmall);
+            var phase = _awake && (clock.sec % 2 == 0);
+            Bot.draw(dc, _ox + 178, _oy + 46, _pal, mood, blink, phase, _fSmall);
         }
+    }
+
+    // ---- bot mood ----
+
+    // Priority: low battery > notification > night > goal > active > rain > morning > normal
+    private function pickMood(nowMin, battery, steps, goal, settings, kind) {
+        if (battery < 20) {
+            return Bot.LOW;
+        }
+        var haveSun = (_sunRise != null && _sunSet != null);
+        if (_emotions && settings.notificationCount != null && settings.notificationCount > 0) {
+            return Bot.NOTIFY;
+        }
+        if (haveSun && (nowMin < _sunRise || nowMin >= _sunSet)) {
+            return Bot.NIGHT;
+        }
+        if (goal != null && goal > 0 && steps >= goal) {
+            return Bot.HAPPY;
+        }
+        if (!_emotions) {
+            return Bot.NORMAL;
+        }
+        if (_active) {
+            return Bot.RUN;
+        }
+        if (kind == WeatherIcon.RAIN || kind == WeatherIcon.STORM || kind == WeatherIcon.SNOW) {
+            return Bot.RAIN;
+        }
+        if (haveSun && nowMin >= _sunRise && nowMin < _sunRise + 60) {
+            return Bot.MORNING;
+        }
+        return Bot.NORMAL;
+    }
+
+    // ~100+ steps per minute since the last sample = running / brisk walking
+    private function updateActivity(nowMin, steps) {
+        if (nowMin == _rateMin) {
+            return;
+        }
+        var elapsed = nowMin - _rateMin;
+        if (_rateMin >= 0 && elapsed > 0 && elapsed <= 3 && steps >= _rateSteps) {
+            _active = ((steps - _rateSteps) / elapsed) >= 100;
+        } else {
+            _active = false; // first sample, midnight reset or a long gap
+        }
+        _rateMin = nowMin;
+        _rateSteps = steps;
     }
 
     // ---- helpers ----
