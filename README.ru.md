@@ -12,7 +12,7 @@
 | Путь | Что это |
 |---|---|
 | `.claude/skills/connectiq-watchface/` | Скилл: весь цикл работы, ключевые API, грабли, публикация в стор |
-| `.claude/commands/` | `/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-store` |
+| `.claude/commands/` | `/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-location`, `/wf-store` |
 | `templates/n3on-terminal/` | Эталонный cyberpunk-циферблат (FR945, проверен на часах) |
 | `scripts/gen_font.py` | TTF → пиксельный BMFont (`.fnt` + `.png`) без сглаживания |
 | `scripts/gen_icon.py` | Иконка лаунчера: пиксельный бот |
@@ -34,6 +34,7 @@ claude            # скилл и команды подхватятся из .cl
 - `/wf-new минималистичный янтарный аналог для fenix7`
 - `/wf-add-device templates/n3on-terminal fr955 fenix7 fr965`
 - `/wf-debug <вывод компилятора>`
+- `/wf-location Poznań` (локация для теста восхода/заката, офлайн; перед коммитом `/wf-location reset`)
 - `/wf-store templates/n3on-terminal`
 
 Новые циферблаты создаются в `faces/<slug>/`.

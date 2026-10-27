@@ -40,4 +40,4 @@ Working kit for Garmin watch faces. Reference project: `templates/n3on-terminal/
 - `scripts/log_fix.py` is an opt-in dataset logger. `/wf-debug` calls it only if `datasets/.optin` exists.
 
 ## Commands in this repo
-`/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-store`. They live in `.claude/commands/`.
+`/wf-new`, `/wf-preview`, `/wf-add-device`, `/wf-debug`, `/wf-location`, `/wf-store`. They live in `.claude/commands/`.

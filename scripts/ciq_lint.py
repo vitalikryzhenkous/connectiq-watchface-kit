@@ -7,6 +7,8 @@ Checks:
   manifest  - XML parses, 32-hex app id, type=watchface, products listed, launcher icon set
   palette   - with --mip: every 0xRRGGBB literal in source/*.mc uses only 00/55/AA/FF channels
   resources - fonts/drawables referenced in XML exist on disk
+  location  - warns if a non-zero Lat/Lon default is baked into properties.xml
+              (personal location; reset with scripts/set_location.py --reset before publishing)
 Exit code 1 if any error.
 """
 import json
@@ -101,9 +103,31 @@ def check_resources(project):
     return issues
 
 
+def check_location(project):
+    path = os.path.join(project, "resources", "settings", "properties.xml")
+    if not os.path.isfile(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        xml = f.read()
+    vals = {}
+    for key in ("Lat", "Lon"):
+        m = re.search(r'<property id="%s" type="float">([^<]*)</property>' % key, xml)
+        if m:
+            try:
+                vals[key] = float(m.group(1))
+            except ValueError:
+                vals[key] = None
+    if any(v not in (None, 0.0) for v in vals.values()):
+        return [{"level": "warning", "check": "location",
+                 "msg": f"Lat/Lon default is {vals.get('Lat')}, {vals.get('Lon')} (a personal location). "
+                        "Fine for sideload testing; run scripts/set_location.py --reset before committing or store export"}]
+    return []
+
+
 def lint(project, mip=False):
     issues, manifest = check_manifest(project)
     issues += check_resources(project)
+    issues += check_location(project)
     if mip:
         issues += check_palette(project)
     return {"project": project, "manifest": manifest, "issues": issues,

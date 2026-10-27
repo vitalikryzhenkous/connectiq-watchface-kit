@@ -25,3 +25,4 @@
 ## Location (sunrise/sunset shows --:--)
 - `Weather.getCurrentConditions().observationLocationPosition` is often null, and `Activity.getActivityInfo().currentLocation` stays null until the watch has had a GPS fix (in any GPS activity). A fresh face has no position, so cache the last good one in `Application.Storage`.
 - Always offer a manual Lat/Lon setting (0/0 = auto) and show a hint like "no gps fix" instead of an empty time.
+- For sideload testing use `/wf-location <city>` (offline, city-level). Reset it with `/wf-location reset` before committing or store export.
