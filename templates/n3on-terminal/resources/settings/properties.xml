@@ -3,4 +3,7 @@
     <property id="Scanlines" type="boolean">true</property>
     <property id="Glitch" type="boolean">true</property>
     <property id="ShowBot" type="boolean">true</property>
+    <!-- 0 / 0 = automatic (phone weather or last GPS activity) -->
+    <property id="Lat" type="float">0.0</property>
+    <property id="Lon" type="float">0.0</property>
 </properties>

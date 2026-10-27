@@ -24,6 +24,7 @@ class N3onView extends WatchUi.WatchFace {
     private var _scan = true;
     private var _glitch = true;
     private var _showBot = true;
+    private var _manLoc = null; // manual [lat, lon] from settings
 
     // sunrise / sunset cache
     private var _sunKey = null;
@@ -53,6 +54,14 @@ class N3onView extends WatchUi.WatchFace {
         _scan = readProp("Scanlines", true);
         _glitch = readProp("Glitch", true);
         _showBot = readProp("ShowBot", true);
+        var lat = readProp("Lat", 0.0);
+        var lon = readProp("Lon", 0.0);
+        _manLoc = null;
+        if ((lat instanceof Number || lat instanceof Float || lat instanceof Double) &&
+            (lon instanceof Number || lon instanceof Float || lon instanceof Double) &&
+            !(lat == 0 && lon == 0) && lat.abs() <= 90 && lon.abs() <= 180) {
+            _manLoc = [lat.toFloat(), lon.toFloat()];
+        }
     }
 
     function onEnterSleep() {
@@ -141,7 +150,7 @@ class N3onView extends WatchUi.WatchFace {
                 loc = ai.currentLocation.toDegrees();
             }
         }
-        loc = cacheLocation(loc);
+        loc = (_manLoc != null) ? _manLoc : cacheLocation(loc);
 
         var x = 16;
         x = seg(dc, x, 134, _pal[Theme.PRIMARY], "> wx ");
@@ -157,8 +166,13 @@ class N3onView extends WatchUi.WatchFace {
         updateSun(loc, d, clock);
         x = 12;
         x = seg(dc, x, 154, _pal[Theme.PRIMARY], "> sun ");
-        x = seg(dc, x, 154, _pal[Theme.HILITE], "▲" + hm(_sunRise, settings.is24Hour));
-        x = seg(dc, x, 154, _pal[Theme.ACCENT], " ▼" + hm(_sunSet, settings.is24Hour));
+        if (_sunRise == null && _sunSet == null && loc == null) {
+            // no position yet: hint instead of --:--
+            seg(dc, x, 154, _pal[Theme.DIM], "no gps fix");
+        } else {
+            x = seg(dc, x, 154, _pal[Theme.HILITE], "▲" + hm(_sunRise, settings.is24Hour));
+            x = seg(dc, x, 154, _pal[Theme.ACCENT], " ▼" + hm(_sunSet, settings.is24Hour));
+        }
 
         // steps + battery
         var steps = (act.steps != null) ? act.steps : 0;

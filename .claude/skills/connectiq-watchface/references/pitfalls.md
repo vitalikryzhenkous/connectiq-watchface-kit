@@ -21,3 +21,7 @@
 
 ## Phone pairing (iOS)
 - "Cannot Add Accessory" while the watch shows a code: forget the device in iOS Bluetooth and in Settings → Privacy → Accessories, remove it from Garmin Connect, reboot both, turn off Low Power mode and Focus, then pair only from the Garmin Connect app and confirm the code quickly.
+
+## Location (sunrise/sunset shows --:--)
+- `Weather.getCurrentConditions().observationLocationPosition` is often null, and `Activity.getActivityInfo().currentLocation` stays null until the watch has had a GPS fix (in any GPS activity). A fresh face has no position, so cache the last good one in `Application.Storage`.
+- Always offer a manual Lat/Lon setting (0/0 = auto) and show a hint like "no gps fix" instead of an empty time.
