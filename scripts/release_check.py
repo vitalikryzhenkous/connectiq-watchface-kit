@@ -43,6 +43,7 @@ MANUAL = [
     "Simulator: weather missing (no phone) → no crash, shows --",
     "Simulator: no position → 'no gps fix'; position set → sunrise/sunset shown",
     "Simulator: battery <20%, notifications, step goal, rain → bot emotions",
+    "Simulator: bot language EN/PL/UA/JA + own phrase; typing animation after wake; holiday look (change the date)",
     "Simulator: File → View Memory, peak well below the watch-face limit",
     "Real watch: sideload, run at least a few hours, no IQ! crash (check GARMIN/APPS/LOGS)",
     "Export Project → .iq signed with YOUR developer key (backed up in a password manager)",

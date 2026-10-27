@@ -77,7 +77,7 @@ See [bench/README.md](bench/README.md).
 | `.claude/skills/connectiq-watchface/references/pitfalls.md` | Compiler, runtime and tooling gotchas |
 
 ## N3on Terminal (reference face)
-A cyberpunk terminal face with glitched time, weather, sunrise and sunset (computed on the watch), steps, battery, phone status, and an original pixel bot that sleeps at night, cheers at your step goal and looks tired at low battery. It has 3 themes and phone settings, needs no permissions and collects no data.
+A cyberpunk terminal face with neon time (a glitch burst on wrist raise), weather, sunrise and sunset (computed on the watch), steps, battery, phone status, and an original pixel bot that sleeps at night, cheers at your step goal and looks tired at low battery. It has 4 themes (including High contrast) and 12 phone settings, needs no permissions and collects no data.
 
 N3o has 8 emotions, picked automatically from data the face already reads: normal, night, low battery, step goal, rain, notification, running and morning.
 

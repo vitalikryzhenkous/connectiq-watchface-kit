@@ -11,3 +11,4 @@ developer_key*
 datasets/local/
 datasets/.optin
 .pytest_cache/
+.vscode/

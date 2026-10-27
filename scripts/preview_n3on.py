@@ -1,4 +1,4 @@
-"""Pixel-accurate PNG preview of the N3on Terminal face (3 themes side by side).
+"""Pixel-accurate PNG preview of the N3on Terminal face (themes, emotions, holidays, phrases).
 
 Usage: python3 scripts/preview_n3on.py <project_dir> <out.png> [--frames <dir>] [--moods <sheet.png>] [--holidays <sheet.png>] [--phrases <sheet.png>]
 

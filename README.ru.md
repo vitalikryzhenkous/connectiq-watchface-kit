@@ -55,6 +55,13 @@ python3 scripts/preview_n3on.py templates/n3on-terminal preview.png
 
 ![N3o](docs/n3o-emotions.png)
 
+## Праздники и фразы
+- Праздничные образы включаются по дате: Хэллоуин, Рождество, Новый год, Валентин, Пасха, зимний шарф.
+- В первой строке N3o «говорит»: фразы по ситуации на EN/PL/UA/JA или своя фраза, печатаются по буквам при подъёме руки.
+- Тема High contrast — для яркого солнца и слабого зрения.
+
+![Фразы](docs/n3o-phrases.png)
+
 ## Релиз
 Перед публикацией в стор: `/wf-release-check templates/n3on-terminal` (или `python3 scripts/release_check.py templates/n3on-terminal`).
 
