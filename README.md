@@ -2,7 +2,7 @@
 
 🇬🇧 English · 🇷🇺 [Русский](README.ru.md)
 
-[![CI](https://github.com/vitalikryzhenkous/connectiq-watchface-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/vitalikryzhenkous/connectiq-watchface-kit/actions/workflows/ci.yml) [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
+[![Connect IQ Store](https://img.shields.io/badge/Connect%20IQ-N3on%20Terminal-00FFFF?logo=garmin&logoColor=000)](https://apps.garmin.com/en-US/apps/bf1ea0aa-ea66-4dc3-b44e-e311fd759965) [![CI](https://github.com/vitalikryzhenkous/connectiq-watchface-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/vitalikryzhenkous/connectiq-watchface-kit/actions/workflows/ci.yml) [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
 
 Build Garmin Connect IQ watch faces with [Claude Code](https://claude.com/claude-code). It comes with a ready skill, slash commands, pixel-font tooling and a complete reference face that has been verified on a real Forerunner 945.
 
@@ -77,6 +77,8 @@ See [bench/README.md](bench/README.md).
 | `.claude/skills/connectiq-watchface/references/pitfalls.md` | Compiler, runtime and tooling gotchas |
 
 ## N3on Terminal (reference face)
+**Install it from the Connect IQ Store: [N3on Terminal](https://apps.garmin.com/en-US/apps/bf1ea0aa-ea66-4dc3-b44e-e311fd759965)** (Forerunner 945, 945 LTE, 745).
+
 A cyberpunk terminal face with glitched neon time (always, on wrist raise or off), weather, sunrise and sunset (computed on the watch), steps, battery, phone status, and an original pixel bot that sleeps at night, cheers at your step goal and looks tired at low battery. It has 4 themes (including High contrast) and 12 phone settings, needs no permissions and collects no data.
 
 N3o has 8 emotions, picked automatically from data the face already reads: normal, night, low battery, step goal, rain, notification, running and morning.

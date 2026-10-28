@@ -15,6 +15,7 @@
 | Monetization | No (the app doesn't ask for tips) |
 | App migration to new devices | No (layout is tuned for 240px MIP) |
 | Screenshots | `screenshots/*-240.png` (native) or `*-round.png` |
+| Store page | https://apps.garmin.com/en-US/apps/bf1ea0aa-ea66-4dc3-b44e-e311fd759965 |
 | Source / support URL | https://github.com/vitalikryzhenkous/connectiq-watchface-kit |
 
 ---

@@ -2,6 +2,8 @@
 
 🇬🇧 [English](README.md) · 🇷🇺 Русский
 
+[![Connect IQ Store](https://img.shields.io/badge/Connect%20IQ-N3on%20Terminal-00FFFF?logo=garmin&logoColor=000)](https://apps.garmin.com/en-US/apps/bf1ea0aa-ea66-4dc3-b44e-e311fd759965)
+
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/vitaliiryzhenko)
 
 Набор для создания циферблатов Garmin Connect IQ вместе с Claude Code: скилл, slash-команды, скрипты и эталонный проект.
@@ -72,7 +74,7 @@ python3 scripts/preview_n3on.py templates/n3on-terminal preview.png
 - Используй только оригинальный дизайн, без чужих логотипов и персонажей. Не ставь «Garmin» в название приложения.
 
 ## Магазин
-N3on Terminal готовится к публикации в Connect IQ Store. Тексты на 4 языках, скриншоты и иконка лежат в `templates/n3on-terminal/store/`.
+N3on Terminal опубликован в Connect IQ Store: [N3on Terminal](https://apps.garmin.com/en-US/apps/bf1ea0aa-ea66-4dc3-b44e-e311fd759965). Тексты на 4 языках, скриншоты и иконка лежат в `templates/n3on-terminal/store/`.
 
 ## Скилл глобально (во всех проектах)
 ```bash
