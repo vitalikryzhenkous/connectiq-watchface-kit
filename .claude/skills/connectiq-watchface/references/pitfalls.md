@@ -27,6 +27,9 @@
 - Always offer a manual Lat/Lon setting (0/0 = auto) and show a hint like "no gps fix" instead of an empty time.
 - For sideload testing use `/wf-location <city>` (offline, city-level). Reset it with `/wf-location reset` before committing or store export.
 
+## Weather shows `--`
+- If Garmin's own weather widget also says "waiting for data", the watch isn't getting weather from the phone and the face is fine. On iPhone, set Garmin Connect to: Location "Always" with Precise on, Background App Refresh on, Bluetooth on. Turn Low Power Mode off, then sync in Garmin Connect.
+
 ## Text and animation on watch faces
 - Watch faces can't use `Timer`. When awake, `onUpdate` runs once per second; in sleep, once per minute. Typing effects reveal 2–3 characters per tick, measured from `onExitSleep`.
 - Bitmap fonts contain only the glyphs you generate. Add Polish/Cyrillic with `gen_font.py --chars`. For CJK, ship a subset font (phrase glyphs + kana) and load it only when needed. CJK glyphs are about 2× wider than Latin, so budget the line width.
